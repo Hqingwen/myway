@@ -1,3 +1,55 @@
-Java
 
-一、数组
+
+
+
+
+
+
+
+Set鎺ュ彛
+瀹炵幇绫伙細
+	HashSet
+	TreeSet
+
+
+
+Map鎺ュ彛锛屽寘鍚竴涓狤ntry鎺ュ彛
+瀹炵幇绫伙細
+1銆丠ashMap瀹炵幇Map鎺ュ彛
+	鍖呭惈涓�涓疄鐜癊ntry鎺ュ彛鐨勫唴閮ㄧ被Node锛屽嵆涓洪敭鍊煎
+	搴曞眰锛氱被鍨嬩负Node鐨勬暟缁則able
+
+
+2銆乀reeSet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
