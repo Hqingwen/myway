@@ -6,15 +6,15 @@
 /**************************************************************************************
 替代词解释：
 
-表名				tablename
-新表名			new_tablename
+表中 		tablename
+新表名		new_tablename
 
-字段名			columnname
-新字段名		new_columnname
+字段名		columnname
+新字段名	new_columnname
 
-字段类型		datatype
+字段类型	datatype
 
-用户名 			username
+用户名		username
 
 **************************************************************************************/
 
