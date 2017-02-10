@@ -37,8 +37,23 @@ Map
 	存取元素时要遍历
 
 
+List
+实现类：
+1、ArrayList，顺序存储的线性表
+	实际存储：transient Object[] elementData
+		系统序列化该类对象时不会直接序列化elementData，
+		而是通过ArrayList提供的writeObject()和readObject()来实现定制序列化
+	可以通过Collections.synchronizedList()包装实现线程安全
+	元素个数：变量size
+
+2、LinkedList
+	链式存储的线性表，相当于双向链表，实现了List，Deque，故还可以当做队列或栈使用
 
 
+3、Vector
+	实际存储：Object[] elementData
+	线程安全，基本方法都synchronized
+	元素个数：变量elementCount
 
 	
 
