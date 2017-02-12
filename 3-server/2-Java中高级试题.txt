@@ -1,0 +1,568 @@
+一. spring原理，spring优势 
+    控制反转模式（也称作依赖性介入）的基本概念是：不创建对象，但是描述创建它们的方式。在代码中不直接与对象和服务连接，但在配置文件中描述哪一个组件需要哪一项服务。容器（在 Spring 框架中是 IOC 容器） 负责将这些联系在一起。
+面向方面的编程，即 AOP，是一种编程技术，它允许程序员对横切关注点或横切典型的职责分界线的行为（例如日志和事务管理）进行模块化。AOP 的核心构造是方面，它将那些影响多个类的行为封装到可重用的模块中。
+    spring优势
+    a.使用Spring的IOC容器，将对象之间的依赖关系交给Spring，降低组件之间的耦合性，让我们更专注于应用逻辑
+    b.可以提供众多服务，事务管理，WebService等。
+    c.AOP的很好支持，方便面向切面编程。
+    d.对主流的框架提供了很好的集成支持，如Hibernate,Struts2,JPA等
+    e.Spring DI机制降低了业务对象替换的复杂性。
+    f.Spring属于低侵入，代码污染极低。
+    g.Spring的高度可开放性，并不强制依赖于Spring，开发者可以自由选择Spring部分或全部
+    
+一、上面的是springMVC的工作原理图：
+    1、客户端发出一个http请求给web服务器，web服务器对http请求进行解析，如果匹配DispatcherServlet的请求映射路径（在web.xml中指定），web容器将请求转交给DispatcherServlet.
+    2、DipatcherServlet接收到这个请求之后将根据请求的信息（包括URL、Http方法、请求报文头和请求参数Cookie等）以及HandlerMapping的配置找到处理请求的处理器（Handler）。[要详述]
+    3-4、DispatcherServlet根据HandlerMapping找到对应的Handler,将处理权交给Handler（Handler将具体的处理进行封装），再由具体的HandlerAdapter对Handler进行具体的调用。
+    5、Handler对数据处理完成以后将返回一个ModelAndView()对象给DispatcherServlet。
+    6、Handler返回的ModelAndView()只是一个逻辑视图并不是一个正式的视图，DispatcherSevlet通过ViewResolver将逻辑视图转化为真正的视图View。
+    7、Dispatcher通过model解析出ModelAndView()中的参数进行解析最终展现出完整的view并返回给客户端。
+
+    重点：从一个url请求，怎么去找到最后执行的controller，描述这个技术实现过程或者实现的机制。
+
+二、spring线程池有哪些键字
+    <!-- 配置线程池 -->  
+    <bean id ="taskExecutor"  class ="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" >  
+        <!-- 线程池维护线程的最少数量 -->  
+    <property name ="corePoolSize" value ="5" />  
+        <!-- 线程池维护线程所允许的空闲时间 -->  
+    <property name ="keepAliveSeconds" value ="30000" />  
+        <!-- 线程池维护线程的最大数量 -->  
+    <property name ="maxPoolSize" value ="1000" />  
+        <!-- 线程池所使用的缓冲队列 -->  
+    <property name ="queueCapacity" value ="200" />  
+    </bean>  
+
+三、有2台服务的时候，syschronize能不能保证同步
+    不能，因为是不同的JVM，如果需要同步，则需要分布式锁。
+    分布式锁可以看看，zookeeper,redis；多台服务器需要引入缓存机制，比如redis,memcache的同步锁cas。数据库锁：悲观锁或者乐观锁
+    
+四、1、2个或多线程通信/交换数据，可以采用哪些手段？ 2、线程同步都有哪些手段。 3、线程池
+    1、使用Exchanger在线程之间交换数据。    
+    2、线程通讯：
+    为什么要使用线程通讯？
+    当使用synchronized 来修饰某个共享资源时(分同步代码块和同步方法两种情况）,当某个线程获得共享资源的锁后就可以执行相应的代码段，直到该线程运行完该代码段后才释放对该 共享资源的锁，让其他线程有机会执行对该共享资源的修改。当某个线程占有某个共享资源的锁时，如果另外一个线程也想获得这把锁运行就需要使用wait() 和notify()/notifyAll()方法来进行线程通讯了。
+    Java.lang.object 里的三个方法wait() notify() notifyAll()
+    wait方法导致当前线程等待，直到其他线程调用同步监视器的notify方法或notifyAll方法来唤醒该线程。
+    wait(mills)方法
+    都是等待指定时间后自动苏醒，调用wait方法的当前线程会释放该同步监视器的锁定，可以不用notify或notifyAll方法把它唤醒。
+    notify()
+    唤醒在同步监视器上等待的单个线程，如果所有线程都在同步监视器上等待，则会选择唤醒其中一个线程，选择是任意性的，只有当前线程放弃对该同步监视器的锁定后，也就是使用wait方法后，才可以执行被唤醒的线程。
+    notifyAll()方法
+    唤醒在同步监视器上等待的所有的线程。只用当前线程放弃对该同步监视器的锁定后，才可以执行被唤醒的线程 
+
+五、最擅长的技术
+
+六、java.util包下有哪些工具类
+        java.util.concurrent.Callable<V>;
+        java.util.Calendar;
+        java.util.concurrent.locks.ReentrantLock;
+        java.util.Collection<E>;
+        java.util.Formatter;
+        java.util.Enumeration<E>    ;
+        java.util.HashSet<E>    ;
+        java.util.Hashtable<K, V>    ;
+        java.util.Date    ;
+        java.util.EventListener    ;
+        java.util.List<E>    ;
+        java.util.Observable    ;
+        java.util.Random    ;
+        java.util.UUID uid = new UUID(32, 16);
+        java.util.Properties    ;
+        
+七、spring都用到哪些设计模式
+
+八、CGLIB原理
+    JDK实现动态代理需要实现类通过接口定义业务方法，对于没有接口的类，如何实现动态代理呢，这就需要CGLib了。
+    CGLib创建的动态代理对象性能比JDK创建的动态代理对象的性能高不少，但是CGLib在创建代理对象时所花费的时间却比JDK多得多，所以对于单例的对象，因为无需频繁创建对象，用CGLib合适，反之，使用JDK方式要更为合适一些。同时，由于CGLib由于是采用动态创建子类的方法，对于final方法，无法进行代理。
+    
+九、线程池主要是作用是什么？
+
+
+十、1、HashSet为什么快
+    在3.5之前，想用哈希表来提高集合的查询效率，只有Hashtable和Dictionary<TKey,TValue>两种选择，而这两种都是键-值方式的存储。但有些时候，我们只需要其中一个值，例如一个Email集合，如果用泛型哈希表来存储，往往要在Key和Value各保存一次，不可避免的要造成内存浪费。而HashSet<T>只保存一个值，更加适合处理这种情况。
+
+    此外，HashSet<T>的Add方法返回bool值，在添加数据时，如果发现集合中已经存在，则忽略这次操作，并返回false值。而Hashtable和Dictionary<TKey,TValue>碰到重复添加的情况会直接抛出错误。
+
+    从使用上来看，HashSet<T>和线性集合List<T>更相似一些，但前者的查询效率有着极大的优势。假如，用户注册时输入邮箱要检查唯一性，而当前已注册的邮箱数量达到10万条，如果使用List<T>进行查询，需要遍历一次列表，时间复杂度为O（n），而使用HashSet<T>则不需要遍历，通过哈希算法直接得到列表中是否已存在，时间复杂度为O（1），这是哈希表的查询优势
+    
+    2、HashMap为什么根据Key查找速度会快，hashcode的实现原理 
+    哈希表与哈希方法
+    哈希方法在“键- 值对”的存储位置与它的键之间建立一个确定的对应函数关系 hash() ，使得每一个键与结构中的一个唯一的存储位置相对应：
+    存储位置=hash( 键 )    
+    在搜索时，首先对键进行hash 运算，把求得的值当做“键 - 值对”的存储位置，在结构中按照此位置取“键 - 值对”进行比较，若键相等，则表示搜索成功。在存储“键 - 值对”的时候，依照相同的 hash 函数计算存储位置，并按此位置存放，这种方法就叫做哈希方法，也叫做散列方法。在哈希方法中使用的转换函数 hash 被称作哈希函数 ( 或者散列函数 ) 。按照此中算法构造出来的表叫做哈希表 ( 或者散列表 ) 。    
+    哈希函数建立了从“键- 值对”到哈希表地址集合的一个映射，有了哈希函数，我们就可以根据键来确定“键 - 值对”在哈希表中的位置的地址。使用这种方法由于不必进行多次键的比较，所以其搜索速度非常快，很多系统都使用这种方法进行数据的组织和检索。    
+    举一个例子，有一组“键值对”：<5, ” tom ” >、 <8, ” Jane ” >、 <12, ” Bit ” >、 <17, ” Lily ” >、 <20, ” sunny ” >，我们按照如下哈希函数对键进行计算 :hash(x)=x%17+3 ，得出如下结果： hash(5)=8 、 hash(8)=11 、 hash(12)=15 、 hash(17)=3 、 hash(20)=6 。我们把 <5, ” tom ” >、 <8, ” Jane ” >、 <12, ” Bit ” >、 <17, ” Lily ” >、 <20, ” sunny ” >分别放到地址为 8 、 11 、 15 、 3 、 6 的位置上。当要检索 17 对应的值的时候，只要首先计算 17 的哈希值为 3 ，然后到地址为 3 的地方去取数据就可以找到 17 对应的数据是“ Lily ”了，可见检索速度是非常快的。
+    
+十一、抽象和接口的区别，应用到什么场景？
+    参考：http://jackleechina.iteye.com/blog/1555467
+    abstract class表示的是"is-a"关系，interface表示的是"like-a"关系，大家在选择时可以作为一个依据。
+    1.abstract class 在 Java 语言中表示的是一种继承关系，一个类只能使用一次继承关系。但是，一个类却可以实现多个interface。
+    2.在abstract class 中可以有自己的数据成员，也可以有非abstarct的成员方法，而在interface中，只能够有静态的不能被修改的数据成员（也就是必须是static final的，不过在 interface中一般不定义数据成员），所有的成员方法都是abstract的。
+    3.abstract class和interface所反映出的设计理念不同。其实abstract class表示的是"is-a"关系，interface表示的是"like-a"关系。
+    4.实现抽象类和接口的类必须实现其中的所有方法。抽象类中可以有非抽象方法。接口中则不能有实现方法。
+    5.接口中定义的变量默认是public static final 型，且必须给其初值，所以实现类中不能重新定义，也不能改变其值。
+    6.抽象类中的变量默认是 friendly 型，其值可以在子类中重新定义，也可以重新赋值。
+    7.接口中的方法默认都是 public,abstract 类型的。
+    
+    接口是一组规则的集合，它规定了实现本接口的类或接口必须拥有的一组规则。
+    面向对象思想和核心之一叫做多态性，什么叫多态性？说白了就是在某个粒度视图层面上对同类事物不加区别的对待而统一处理。
+    在系统分析和架构中，分清层次和依赖关系，每个层次不是直接向其上层提供服务（即不是直接实例化在上层中），而是通过定义一组接口，仅向上层暴露其接口功能，上层对于下层仅仅是接口依赖，而不依赖具体类。 
+    这样做的好处是显而易见的，首先对系统灵活性大有好处。当下层需要改变时，只要接口及接口功能不变，则上层不用做任何修改。甚至可以在不改动上层代码时将下层整个替换掉，就像我们将一个WD的60G硬盘换成一个希捷的160G的硬盘，计算机其他地方不用做任何改动，而是把原硬盘拔下来、新硬盘插上就行了，因为计算机其他部分不依赖具体硬盘，而只依赖一个IDE接口，只要硬盘实现了这个接口，就可以替换上去。
+
+    注意：
+    1）一个类如果实现了一个借口，则要实现该接口的所有方法。
+    2）方法的名字、返回类型、参数必须与接口中完全一致。如果方法的返回类型不是void，则方法体必须至少有一条return语句。
+    3）因为接口的方法默认是public类型的，所以在实现的时候一定要用public来修饰（否则默认为protected类型，缩小了方法的使用范围）。
+    接口是常量值和方法定义的集合。接口是一种特殊的抽象类。
+    java类是单继承的。classB Extends classA
+    java接口可以多继承。Interface3 Extends Interface0, Interface1, interface……
+    不允许类多重继承的主要原因是，如果A同时继承B和C，而b和c同时有一个D方法，A如何决定该继承那一个呢？
+    但接口不存在这样的问题，接口全都是抽象方法继承谁都无所谓，所以接口可以继承多个接口。
+
+    个人理解：
+    接口有时候更是一个标准。比如数据库的Connection
+    接口和抽象类的不同，有时候是体现的一种关系，一个接口也可以用extends另一个接口，表示是种继承关系。如下代码：
+    public interface Advice {}
+    public interface Interceptor extends Advice {}
+    public interface MethodInterceptor extends Interceptor {
+        Object invoke(MethodInvocation invocation) throws Throwable;
+    }
+    例子2：
+    public interface Future<V>
+    public interface Runnable
+    public interface RunnableFuture<V> extends Runnable, Future<V>
+    public class FutureTask<V> implements RunnableFuture<V>
+    例子3：抽象类继承接口
+    public class HashMap<K,V>    extends AbstractMap<K,V>    implements Map<K,V>, Cloneable, Serializable
+    public abstract class AbstractMap<K,V> implements Map<K,V>
+    例子4：表示的是一种关系extends后面也跟着多个接口类，这里却用extends而不是implements，为何？因为要表示的是一种继承关系。
+    public interface ApplicationContext extends EnvironmentCapable, ListableBeanFactory, HierarchicalBeanFactory,
+        MessageSource, ApplicationEventPublisher, ResourcePatternResolver
+    
+    
+十二、写几个sql熟练一下
+
+十三、Ajax异步原理
+
+十四、Mysql与Oracle区别
+
+十五、Spring Boot小了解一下
+
+十六、Ajax怎么现实异步
+
+十七、HashMap和TreeMap区别, Key可以是null吗？
+    HashMap 支持key=null 但是 Hashtable 不支持 key =null。Hashtable的方法是同步的，而HashMap的方法不是。
+    
+    TreeMap是基于"红黑树"实现，HashMap是基于哈希表实现。HashMap通常比TreeMap快一点(树和哈希表的数据结构使然)，建议多使用HashMap，在需要排序的Map时候才用TreeMap。
+    TreeMap实现SortMap接口，能够把它保存的记录根据键排序,默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator 遍历TreeMap时，得到的记录是排过序的。
+    一般情况下，我们用的最多的是HashMap,在Map 中插入、删除和定位元素，HashMap 是最好的选择。但如果您要按自然顺序或自定义顺序遍历键，那么TreeMap会更好。如果需要输出的顺序和输入的相同,那么用LinkedHashMap可以实现,它还可以按读取顺序来排列.
+    TreeMap能够把它保存的记录根据键排序，默认是按升序排序，也可以指定排序的比较器。当用Iterator遍历TreeMap时，得到的记录是排过序的。
+
+    1.AbstractMap抽象类和SortedMap接口
+    AbstractMap抽象类：覆盖了equals()和hashCode()方法以确保两个相等映射返回相同的哈希码。如果两个映射大小相等、包含同样的键且每个键在这两个映射中对应的值都相同，则这两个映射相等。映射的哈希码是映射元素哈希码的总和，其中每个元素是Map.Entry接口的一个实现。因此，不论映射内部顺序如何，两个相等映射会报告相同的哈希码。
+    SortedMap接口：它用来保持键的有序顺序。SortedMap接口为映像的视图(子集)，包括两个端点提供了访问方法。除了排序是作用于映射的键以外，处理SortedMap和处理SortedSet一样。添加到SortedMap实现类的元素必须实现Comparable接口，否则您必须给它的构造函数提供一个Comparator接口的实现。TreeMap类是它的唯一一份实现。
+    2.两种常规Map实现(分别继承自AbstractMap和SortedMap)
+    HashMap：基于哈希表实现。使用HashMap要求添加的键类明确定义了hashCode()和equals()[可以重写hashCode()和equals()]，为了优化HashMap空间的使用，您可以调优初始容量和负载因子。
+    (1)HashMap(): 构建一个空的哈希映像
+    (2)HashMap(Map m): 构建一个哈希映像，并且添加映像m的所有映射
+    (3)HashMap(int initialCapacity): 构建一个拥有特定容量的空的哈希映像
+    (4)HashMap(int initialCapacity, float loadFactor): 构建一个拥有特定容量和加载因子的空的哈希映像
+    TreeMap：基于红黑树实现。TreeMap没有调优选项，因为该树总处于平衡状态。
+    (1)TreeMap():构建一个空的映像树
+    (2)TreeMap(Map m): 构建一个映像树，并且添加映像m中所有元素
+    (3)TreeMap(Comparator c): 构建一个映像树，并且使用特定的比较器对关键字进行排序
+    (4)TreeMap(SortedMap s): 构建一个映像树，添加映像树s中所有映射，并且使用与有序映像s相同的比较器排序
+    3.两种常规Map性能
+    HashMap：适用于在Map中插入、删除和定位元素。
+    Treemap：适用于按自然顺序或自定义顺序遍历键(key)。
+    4.总结：HashMap通常比TreeMap快一点(树和哈希表的数据结构使然)，建议多使用HashMap，在需要排序的Map时候才用TreeMap。
+
+十八、Java当中内存泄露是怎么发生的，是什么情况下即使有了内存回收机制，还是会发生内存泄露。
+
+十九、继承Thread类和实现Runnable接口主要是什么区别？
+Tread类实现了Runnable接口
+如果是多线程，那么用Thread.start()方法，Runnable的run()方法只是普通方法，只能执行一次。
+Thread类中，还有sleep，join，currentThread()、interrupt()、isInterrupted()等方法
+
+二十、如果类里有一个方法，给另外2个类去调用这个方法，如果这个类是单例的，这2个类去调用这个方法，是顺序执行的，还是异步执行的。
+
+二十一、写SQL：1、有一个表Employee，查一个公司里所有超过平均工资的员工。2、女性员工数大于五个人的部门。3、分页语句。
+1、select m.name, m.salary
+  from EMPLOYEE m, (select avg(t.salary) salavg from EMPLOYEE t) n
+ where m.salary > n.salavg;
+ 
+select n.dep from (select count(*)  numb,t.dep  from EMPLOYEE t where t.sex = 'f'  group by t.dep) n where n.numb>5;
+
+SELECT *
+  FROM (SELECT ROWNUM AS rowno, t.*        
+          FROM Employee t        
+         WHERE 1 = 1
+           AND ROWNUM <= 10) table_alias
+ WHERE table_alias.rowno >= 5;
+
+SELECT *
+  FROM (SELECT a.*, ROWNUM rn
+          FROM (SELECT *
+                  FROM Employee) a
+         WHERE ROWNUM <= 10)
+ WHERE rn >= 5
+ 
+
+二十二、A.悲观锁：指在应用程序中显示的为数据资源加锁。尽管能防止丢失更新和不可重复读这类并发问题，但是它会影响并发性能，因此应该谨慎地使用。
+    B.乐观锁：乐观锁假定当前事务操作数据资源时，不回有其他事务同时访问该数据资源，因此完全依靠数据库的隔离级别来自动管理锁的工作。应用程序采用版本控制手段来避免可能出现的并发问题。
+
+二十三、spring初始化的时候，怎么计算bean之间的依赖关系，用什么样的一种数据结构可以去实现这种关系。
+
+
+二十四、spring注入方式
+    依赖注入的3种实现方式分别是：接口注入（interface injection）、Set注入（setter injection）和构造注入（constructor injection）
+
+
+二十五、spring用到哪些设计模式
+
+
+二十六、动态代理实现都有哪些方式。
+    答案来自：http://javatar.iteye.com/blog/814426/
+    动态代理工具比较成熟的产品有：
+    JDK自带的，ASM，CGLIB(基于ASM包装)，JAVAASSIST
+    1. ASM和JAVAASSIST字节码生成方式不相上下，都很快，是CGLIB的5倍。
+    2. CGLIB次之，是JDK自带的两倍。
+    3. JDK自带的再次之，因JDK1.6对动态代理做了优化，如果用低版本JDK更慢，要注意的是JDK也是通过字节码生成来实现动态代理的，而不是反射。
+    4. JAVAASSIST提供者动态代理接口最慢，比JDK自带的还慢。
+    (这也是为什么网上有人说JAVAASSIST比JDK还慢的原因，用JAVAASSIST最好别用它提供的动态代理接口，而可以考虑用它的字节码生成方式) 
+    (三) 差异原因：
+    各方案生成的字节码不一样，
+    像JDK和CGLIB都考虑了很多因素，以及继承或包装了自己的一些类，
+    所以生成的字节码非常大，而我们很多时候用不上这些，
+    而手工生成的字节码非常小，所以速度快，
+    具体的字节码对比，后面有贴出，可自行分析。 
+
+二十七、有没有做过应用的调优，优化的项目。
+
+
+二十八、设计数据库表的三大范式
+    第一范式(确保每列保持原子性)
+     第二范式(确保表中的每列都和主键相关)
+     第三范式(确保每列都和主键列直接相关,而不是间接相关)
+     
+二十九、设计数据库时，表与表之间，涉及继承关系，这个继承关系如何体现。
+
+
+三十、spring框架有哪些特性
+
+
+三十一、spring事务传播机制，里面有哪几个关键字。
+    REQUIRED:业务方法需要在一个容器里运行。如果方法运行时，已经处在一个事务中，那么加入到这个事务，否则自己新建一个新的事务。
+    NOT_SUPPORTED:声明方法不需要事务。如果方法没有关联到一个事务，容器不会为他开启事务，如果方法在一个事务中被调用，该事务会被挂起，调用结束后，原先的事务会恢复执行。
+    REQUIRESNEW:不管是否存在事务，该方法总汇为自己发起一个新的事务。如果方法已经运行在一个事务中，则原有事务挂起，新的事务被创建。
+    MANDATORY：该方法只能在一个已经存在的事务中执行，业务方法不能发起自己的事务。如果在没有事务的环境下被调用，容器抛出例外。
+    SUPPORTS:该方法在某个事务范围内被调用，则方法成为该事务的一部分。如果方法在该事务范围外被调用，该方法就在没有事务的环境下执行。
+    NEVER：该方法绝对不能在事务范围内执行。如果在就抛例外。只有该方法没有关联到任何事务，才正常执行。
+    NESTED:如果一个活动的事务存在，则运行在一个嵌套的事务中。如果没有活动事务，则按REQUIRED属性执行。它使用了一个单独的事务，这个事务拥有多个可以回滚的保存点。内部事务的回滚不会对外部事务造成影响。它只对DataSourceTransactionManager事务管理器起效。
+
+    ISOLATION_DEFAULT：使用数据库默认的隔离级别。 
+    ISOLATION_READ_UNCOMMITTED：允许读取改变了的还未提交的数据，可能导致脏读、不可重复读和幻读。 
+    ISOLATION_READ COMMITTED：允许并发事务提交之后读取，可以避免脏读，可能导致重复读和幻读。 
+    ISOLATION_REPEATABLE_READ：对相同字段的多次读取结果一致，可导致幻读。 
+    ISOLATION_SERIALIZABLE：完全服从ACID的原则，确保不发生脏读、不可重复读和幻读。 
+    
+    Dirty reads                  non-repeatable         reads                phantom reads 
+    Serializable                         不会                   不会                         不会 
+    REPEATABLE READ             不会                   不会                         会 
+    READ COMMITTED             不会                    会                           会 
+    Read Uncommitted            会                        会                           会 
+    
+三十二、事务的ACID属性&5种状态 
+    事务的ACID属性：
+    1. 原子性（Atomicity）
+    原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。
+     2. 一致性（Consistency）
+    事务必须使数据库从一个一致性状态变换到另外一个一致性状态。
+    3. 隔离性（Isolation）
+    事务的隔离性是指一个事务的执行不能被其他事务干扰，即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。
+    4. 持久性（Durability）
+    持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来的其他操作和数据库故障不应该对其有任何影响。
+     5种状态：
+    1. 活动状态
+    事务在执行时的状态叫活动状态。
+    2. 部分提交状态
+    事务中最后一条语句被执行后的状态叫部分提交状态。
+    3. 失败状态
+    事务不能正常执行的状态叫失败状态。
+    4. 提交状态
+    事务在部分提交后，将往硬盘上写入数据，当最后一条信息写入后的状态叫提交状态。进入提交状态的事务就成功完成了。
+    5. 中止状态
+    事务回滚并且数据库已经恢复到事务开始执行前的状态叫中止状态。
+
+三十三、spring是怎么与struts结合的
+
+
+三十四、struts2原理，工作步骤，核心
+
+
+三十五、struts2怎么防止表单重复提交，token原理
+
+
+三十六、struts2拦截器原理
+
+
+三十七、struts2优势
+
+
+三十八、jdbc怎么处理多并发的情况，jdbc池怎么配置
+
+
+三十九、 jsp的内置对象都有哪些
+    JSP中九大内置对象为: request、response、pageContext、session 、application、out 、config、page、exception
+
+四十、怎么提高系统的性能
+
+
+
+四十一、缓存的优势是什么，一般用在哪些方面，真能提高系统性能么 
+    OSCache或者EHCache这种是JVM缓存，它不能在多个应用或者说不能被你的集群共享，这样就会造成内存的浪费，适用于不需要集群的小型应用。memcache 独立的缓存，可以被集群或者多个应用共享，适用于比较大一些的应用吧。
+
+
+四十二、存储过程和函数的不同
+    本质上没区别。只是函数有如：只能返回一个变量的限制。而存储过程可以返回多个。而函数是可以嵌入在sql中使用的,可以在select中调用，而存储过程不行。执行的本质都一样。
+    函数限制比较多，比如不能用临时表，只能用表变量．还有一些函数都不可用等等．而存储过程的限制相对就比较少 
+    1. 一般来说，存储过程实现的功能要复杂一点，而函数的实现的功能针对性比较强。
+    2. 对于存储过程来说可以返回参数，而函数只能返回值或者表对象。
+    3. 存储过程一般是作为一个独立的部分来执行，而函数可以作为查询语句的一个部分来调用，由于函数可以返回一个表对象，因此它可以在查询语句中位于FROM关键字的后面。
+    4. 当存储过程和函数被执行的时候，SQL Manager会到procedure cache中去取相应的查询语句，如果在
+
+四十三、Java下常用的包都有哪些
+    1.java.lang:       核心语言特征（系统默认使用）
+    2.java.awt:       Windows 和 GUI 特性
+    3.java.applet:       通用 Applet 特性
+    4.java.net:       网络
+    5.java.io:       数据输入和输出
+    6.java.util:       各种使用工具特征
+    7.java.math:       数学指令
+    8.java.security:       安全
+    9.java.sql:       数据库操作
+    10.java.text:       文字处理特征
+
+
+四十四、sql优化
+
+
+四十五、 ==、equals、hashcode的区别和联系  http://blog.csdn.net/paincupid/article/details/47699735
+    java中的数据类型，可分为两类：
+    1.基本数据类型，也称原始数据类型。byte,short,char,int,long,float,double,boolean
+       他们之间的比较，应用双等号（==）,比较的是他们的值。
+    2.复合数据类型(类)
+       当他们用（==）进行比较的时候，比较的是他们在内存中的存放地址，所以，除非是同一个new出来的对象，他们的比较后的结果为true，否则比较后结果为false。JAVA当中所有的类都是继承于Object这个基类的，在Object中的基类中定义了一个equals的方法，这个方法的初始行为是比较对象的内存地址，但在一些类库当中这个方法被覆盖掉了，如String,Integer,Date在这些类当中equals有其自身的实现，而不再是比较类在堆内存中的存放地址了。
+       对于复合数据类型之间进行equals比较，在没有覆写equals方法的情况下，他们之间的比较还是基于他们在内存中的存放位置的地址值的，因为Object的equals方法也是用双等号（==）进行比较的，所以比较后的结果跟双等号（==）的结果相同。
+    接下来有两个个关于这两个方法的重要规范(我只是抽取了最重要的两个,其实不止两个)：
+    规范1：若重写equals(Object obj)方法，有必要重写hashcode()方法，确保通过equals(Object obj)方法判断结果为true的两个对象具备相等的hashcode()返回值。
+    规范2：如果equals(Object obj)返回false，即两个对象“不相同”，并不要求对这两个对象调用hashcode()方法得到两个不相同的数。
+    hashcode方法只有在集合中用到
+    将对象放入到集合中时，就是先比较hashcode和后比较equals是否都相等
+
+四十六、SpringMVC和Struts2比较
+     spring mvc的入口是servlet，而struts2是filter（这里要指出，filter和servlet是不同的。以前认为filter是servlet的一种特殊），这样就导致了二者的机制不同，这里就牵涉到servlet和filter的区别了。
+     springmvc是方法级别的拦截，一个方法对应一个request上下文，而方法同时又跟一个url对应,参数的传递是直接注入到方法中的，是该方法独有的。
+     struts2是类级别的拦截， 一个类对应一个request上下文， struts是在接受参数的时候，可以用属性来接受参数， 这就说明参数是让多个方法共享的,这也就无法用注解或其他方式标识其所属方法了
+     
+四十七、集群是怎么实现同步和负载均衡的？
+    负载均衡分硬件层和软件层两种。
+    可以了解下LVS，这是现在很流行的开源负载均衡软件。
+    LVS是Linux Virtual Server的简写，意即Linux虚拟服务器，是一个虚拟的服务器集群系统。
+    LVS属于四层负载均衡,工作在tcp/ip协议栈上,通过修改网络包的ip地址和端口来转发, 由于效率比七层高,一般放在架构的前端.
+    七层的负载均衡有nginx, haproxy, apache等, 工作在应用层,因此可以将HTTP请求等应用数据发送到具体的应用服务器,如将图片请求转发到特定的服务器上,总之可以做到更智能的负载均衡，这些功能在四层负载均衡上不好实现,一般放在架构的后面位置,布置在应用服务器前面. 
+    
+    synchronized 在集群环境不能起到同步控制的作用
+    如果需要解决并发问题
+    1.分布式锁
+    2.数据库锁：悲观锁或者乐观锁
+    
+    并发控制，主要是控制共享资源
+    数据库锁是数据库自带的，比如悲观锁for update
+    分布式锁可以看看, zookeeper, redis，都能实现 
+    既然你是集群，程序里的数据同步也只是在单台服务器，多台服务器需要引入缓存机制，比如redis,memcache的同步锁cas ，计数器。
+
+四十八、Java线程中run和start方法的区别
+    Thread类中run()和start()方法的区别如下：
+    1）用start方法来启动线程，真正实现了多线程运行，这时无需等待run方法体代码执行完毕而直接继续执行下面的代码。通过调用Thread类的start()方法来启动一个线程，这时此线程处于就绪（可运行）状态，并没有运行，一旦得到spu时间片，就开始执行run()方法，这里方法run()称为线程体，它包含了要执行的这个线程的内容，Run方法运行结束，此线程随即终止。
+    2）run()方法只是类的一个普通方法而已，如果直接调用Run方法，程序中依然只有主线程这一个线程，其程序执行路径还是只有一条，还是要顺序执行，还是要等待run方法体执行完毕后才可继续执行下面的代码，这样就没有达到写线程的目的。
+    3 ) run()方法:在本线程内调用该Runnable对象的run()方法，可以重复多次调用；start()方法:启动一个线程，调用该Runnable对象的run()方法，不能多次启动一个线程；
+    总结：调用start方法方可启动线程，而run方法只是thread的一个普通方法调用，还是在主线程里执行。
+
+四十九、某小学准备构建一个学生成绩管理系统，全校共有6个年级，每个年级有5个班，教务处期望构建这个系统之后，可以方便的了解到全校的各科成绩从高到低学生名单、全校的所有科目成绩从高到低学生名单、各班的各科成绩从高到低学生名单、各班的所有科目成绩从高到低学生名单，按学生平均成绩对每个年级的各个班级从高到低进行排名。
+
+五十、有一个整数数组，从小到大排列，其中有一些数字是连续的，比如：[28,29,30], [35,36,37], [87,88], [101,102,103,104,105,106]四个数组的数字组成的，请编写一个函数来把一个整数数组分成多个连续数字构成的数组，函数声明如下：
+public in[][] split(int[] integerArray)
+请说明思路，并完成函数体中的部分，请注意性能。
+
+五十一、有两个排好序的整数数组array1和array2，从小到大排列，现在要把这两个有序数组合并为一个有序数据array，函数声明如下：
+public int[] combine(int[] array1, int[] array2)
+请说明思路，并完成函数体中的部分，请注意性能。
+    先依次比较两个数组，按照小的就传入新的数组。当这次比较完之后可能有一个数组的长度很长，留下一些数组，然后在新数组的末尾插入即可。
+    答案代码：http://blog.csdn.net/paincupid/article/details/47789453
+
+
+五十二、在Java中有个关键字final，请用示例的方式写出final可以使用的场景并说明其意义。
+
+五十三、给定一个正整数n，构造一个n*n 维的矩阵，从1,2,........到n*n使其位置的轨迹构成一个螺旋状，举例来说，如果给定n=5，则矩阵看起来如下：
+1    10、2    11、3    12、4    13、5
+16    14、17    15、18    16、19    17、6
+15    18、24    19、25    20、20    21、7
+14    22、23    23、22    24、21    25、8
+13    26、12    27、11    28、10    29、9
+函数声明如下：
+public int[][] getScrewMatrix(int n)
+请考虑是否可以在函数体中只用一条循环语句就完成螺旋矩阵的构建？如可以，请说明思路，并完成函数体中的部分。
+
+五十四、jsp servlet的区别和联系  
+    JSP在本质上就是SERVLET,但是两者的创建方式不一样.
+    Servlet完全是JAVA程序代码构成，擅长于流程控制和事务处理，通过Servlet来生成动态网页很不直观.
+    JSP由HTML代码和JSP标签构成，可以方便地编写动态网页.
+    因此在实际应用中采用Servlet来控制业务流程，而采用JSP来生成动态网页.
+    在struts框架中，JSP位于MVC设计模式的视图层，而Servlet位于控制层.
+
+五十五、Get和Post区别
+    get和post这是http协议的两种方法，另外还有head, delete等 
+    这两种方法有本质的区别，get只有一个流，参数附加在url后，大小个数有严格限制且只能是字符串。post的参数是通过另外的流传递的，不通过url，所以可以很大，也可以传递二进制数据，如文件的上传。 
+    在servlet开发中，以doGet()和doPost()分别处理get和post方法。 
+    另外还有一个doService(), 它是一个调度方法，当一个请求发生时，首先执行doService(),不管是get还是post。在HttpServlet这个基类中实现了一个角度， 首先判断是请求时get还是post,如果是get就调用doGet(), 如果是post就调用doPost()。你也可以直接过载doService()方法，这样你可以不管是get还是post。都会执行这个方法。 
+    
+    service()是在javax.servlet.Servlet接口中定义的, 在 javax.servlet.GenericServlet 中实现了这个接口, 而 doGet/doPost 则是在 javax.servlet.http.HttpServlet 中实现的, javax.servlet.http.HttpServlet 是 javax.servlet.GenericServlet 的子类. 所有可以这样理解, 其实所有的请求均首先由 service() 进行处理, 而在 javax.servlet.http.HttpServlet 的 service() 方法中, 主要做的事情就是判断请求类型是 Get 还是 Post, 然后调用对应的 doGet/doPost 执行. 
+
+    重复访问使用GET方法请求的页面，浏览器会使用缓存处理后续请求。使用POST方法的form提交时，浏览器基于POST将产生永久改变的假设，将让用户进行提交确认。当编成人员正确的使用GET，POST后，浏览器会给出很好的缓存配合，时响应速度更快。
+    
+    从使用经验，我们有如下总结：
+    1、get是吧参数数据队列加到提交表单的Action属性所指的url中，值和表单内各个字段--对应，在url中可以看到。
+    格式为“？字段1=输入数据1&字段2=输入素具2&。。”,再将其送到服务器。
+    如action为字段Name输入数据为jack,字段age的数据为15，则用get方法为“http://www.abc.com?Name=jack&Age=15”;Post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到Action属性所指的URL地址，用户看不到这个过程。
+    2、Get是不安全的，因为在传输过程，数据被放在请求的URL上，而如今现有的很多服务器，代理服务器或者用户代理都会将请求URL记录到日志文件中，然后放在某个地方，这样就可能会有一些隐私的信息被第三方看到，另外，用户也可以再浏览器上直接看到提交的数据，一些系统内部消息将会显示在用户面前。Post的所有操作对用户来说都是不可见的。
+    3、Get传输的数据量小，这主要是因为受URL长度限制；而Post方式提交，所以在上传文件只能使用Post
+    4、Get方式的提交需要用Resquest.QueryString来取得变量的值，而Post方式提交时，必须通过Request.Form来访问提交的内容。
+    5、<form method="get" action="a.asp?b=b">跟<form method="get" action="a.asp">是一样的，也就是说，action页面后边带的参数列表会被忽视；而<form method="post" action="a.asp?b=b">跟<form method="post" action="a.asp">是不一样的。
+    另外
+    Get请求有如下特性：它会将数据添加到URL中，通过这种方式传递到服务器，通常利用一个问号？代表URL地址的结尾与数据参数的开端，后面的参数每一个数据参数以“名称=值”的形式出现，参数与参数之间利用一个连接符&来区分。
+    Post请求有如下特性：数据是放在HTTP主体中的，其组织方式不只一种，有&连接方式，也有分割符方式，可隐藏参数，传递大批数据，比较方便。
+
+五十六、Collection与Map
+    Collection
+    ├List
+    │├LinkedList
+    │├ArrayList
+    │└Vector
+    │　└Stack
+    └Set
+    Map
+    ├Hashtable
+    ├HashMap
+    └WeakHashMap
+
+五十七、struts2和spring的结合原理
+    http://www.cnblogs.com/lraa/p/3544475.html
+    在Struts2中Action是我们扩展的点，我们使用Action处理用户提交的请求，向用户展现数据。
+    为了更好的组织代码的结构，我们一般情况下使用三层的构架：
+    Action → Logic → Dao 这样如果我们手动的管理这些对象之间的关系，以方便非常的繁琐，另外也很不利于管理 变更，所以我们更倾向于使用Spring等类似的IOC框架类管理。
+    2.如何将Springframework和Struts2结合起来 回想第一章，我们指导在Struts2中每一个对象都是靠ObjectFactory创建的，而Springframework
+    就是用来管理对象创佳的，我们只需要将ObjectFactory的对象创建方法改为Spring即可。
+    
+    1）在struts.properties或者struts.xml文件中将objectfactory的属性设置为spring方式：
+        xml方式：
+        <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+        properties方式：
+        struts.objectFactory=org.apache.struts2.spring.StrutsSpringObjectFactory
+    2）当然还需要将需要的Jar文件放在WEB-INF/lib目录下
+        这些文件包括：
+        struts2-spring-plugin-2.0.9.jar
+        spring.jar（为了省事，包含了所有的spring模块，实际项目中可以考虑使用具体的模块）
+    3）剩余的就是Springframework的配置了
+        第一，告诉Spring，对象间关系的配置在那里存放
+        需要在web.xml文件中添加如下内容（注意顺序）：
+        这个Listener在应用程序启动的时候启动，用来读取配置文件。
+        <listener>
+            <listener-class>
+                org.springframework.web.context.ContextLoaderListener
+            </listener-class>
+        </listener>
+    
+        这个参数配置了配置文件的路径，说明我们可以在classpath或者WEB-INF目录下
+        防止名字满足applicationContext-*.xml格式你的文件。
+        <context-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                /WEB-INF/applicationContext-*.xml,classpath*:applicationContext-*.xml
+            </param-value>
+        </context-param>
+    
+    4）如何让Struts2的Action和Springframework的bean管理起来？
+        Struts2会根据struts.xml中配置的class名字在springframeowrk中找id相同的bean，如果找不到
+        就按照普通的方式实例化Action类。
+
+五十八、spring启动时的加载过程
+
+
+五十九、current包下常用类
+java.util.concurrent.Callable;  
+java.util.concurrent.ExecutionException;  
+java.util.concurrent.ExecutorService;  
+java.util.concurrent.Executors;  
+java.util.concurrent.FutureTask;  
+
+六十、超过5千万或1亿的时候，应该怎么处理数据。
+    http://www.xuebuyuan.com/2190409.html
+    1、分区分表
+    2、读写分离
+    
+    分区的好处吧！    
+    1) 增强可用性：如果表的某个分区出现故障，表在其他分区的数据仍然可用；    
+    2) 维护方便：如果表的某个分区出现故障，需要修复数据，只修复该分区即可；    
+    3) 均衡I/O：可以把不同的分区映射到磁盘以平衡I/O，改善整个系统性能；    
+    4) 改善查询性能：对分区对象的查询可以仅搜索自己关心的分区，提高检索速度。    
+    Oracle数据库提供对表或索引的分区方法有三种：    
+    1) 范围分区    
+    2) Hash分区（散列分区）
+    3) 复合分区
+
+    读写分离，基本的原理是让主数据库处理事务性增、改、删操作（INSERT、UPDATE、DELETE），而从数据库处理SELECT查询操作。数据库复制被用来把事务性操作导致的变更同步到集群中的从数据库。
+    
+六十一、struts2漏洞
+    oognl
+    
+六十二、spring注解
+
+Spring 2.5 在 @Repository 的基础上增加了功能类似的额外三个注解：@Component、@Service、@Constroller，它们分别用于软件系统的不同层次：
+@Component 是一个泛化的概念，仅仅表示一个组件 (Bean) ，可以作用在任何层次。
+@Service 通常作用在业务层，但是目前该功能与 @Component 相同。
+@Constroller 通常作用在控制层，但是目前该功能与 @Component 相同。
+
+@Autowired 按 byType 自动注入
+@Resource 默认按 byName 自动注入
+@Resource 的作用相当于 @Autowired
+
+@Repository 只能标注在 DAO 类上呢？这是因为该注解的作用不只是将类识别为 Bean，同时它还能将所标注的类中抛出的数据访问异常封装为 Spring 的数据访问异常类型。 Spring 本身提供了一个丰富的并且是与具体的数据访问技术无关的数据访问异常结构，用于封装不同的持久层框架抛出的异常，使得异常独立于底层的框架。
+
+通过在类上使用 @Repository、@Component、@Service 和 @Constroller 注解，Spring 会自动创建相应的 BeanDefinition 对象，并注册到 ApplicationContext 中。这些类就成了 Spring 受管组件。这三个注解除了作用于不同软件层次的类，其使用方式与 @Repository 是完全相同的。
+
+六十三、异常类型
+类java.lang.Throwable是所有异常类的基类，它包括两个子类：Exception和Error
+1）Error类 
+该类代表错误，指程序无法恢复的异常情况。对于所有错误类型以及其子类，都不要求程序进行处理。常见的Error类例如内存溢出StackOverflowError等。  
+2）Exception类 
+该类代表异常，指程序有可能恢复的异常情况。该类就是整个Java语言异常类体系中的父类。使用该类，可以代表所有异常的情况。 
+
+Exception下除了RuntimeException，其它的是受检查的异常(checked exceptions),其必须被 try{}catch语句块所捕获,或者在方法签名里通过throws子句声明.受检查的异常必须在编译时被捕捉处理,命名为 Checked Exception 是因为Java编译器要进行检查,Java虚拟机也要进行检查,以确保这个规则得到遵守.
+RuntimeException的异常是运行时异常(runtime exceptions),需要程序员自己分析代码决定是否捕获和处理,比如 空指针,被0除...
+而声明为Error的，则属于严重错误,需要根据业务信息进行特殊处理,Error不需要捕捉。
+
+自定义异常类可以继承Throwable类或者Exception，而不要继承Error类。自定义异常类之间也可以有继承关系
+
+Throwable  |- Error
+                    |- Exception    -   |-    IOException    |-    FileNotFoundException
+                                                                        |-    UnknowHostException
+                                                                        |-    EOFException
+                                                |-    ClassNotFound
+                                                |-    cloneNotSupported    Exception
+                                                |-    RuntimeException    |-    AirthmeticException
+                                                                                    |-    IllegalArgumentException
+                                                                                    |-    IndexOutOfBoundsException
+                                                                                    |-    NoSuchElementException
+                                                                                    |-    NullPointerException
