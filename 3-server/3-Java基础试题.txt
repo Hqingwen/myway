@@ -1,0 +1,42 @@
+什么是类的返射机制?
+通过类(Class对象)，可以得出当前类的fields、 method、 construtor、 interface、
+superClass、 modified等，同时可以通过类实例化一个实例、设置属性、唤醒方法。
+Spring中一切都是返射、 struts、 hibernate都是通过类的返射进行开发的
+
+
+获取Class实例的三种方式：
+1、利用对象调用getClass()方法获取该对象的Class实例；
+2、使用Class类的静态方法forName()，用类的名字获取一个Class实例；
+3、运用.class的方式来获取Class实例，对于基本数据类型的封装类，
+      还可以采用.TYPE来获取相对应的基本数据类型的Class实例
+例如：
+String str1="abc";
+Class cls1=str1.getClass();
+Class cls2=String.class;
+Class cls3=Class.forName("java.lang.String");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
