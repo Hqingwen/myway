@@ -2,61 +2,85 @@
 
 一、前端开发：
 	1、HTML5/CSS3
-	2、WebFramework（Bootstrap）
-	3、JavaScript								
+		1.1、Sass（一种对CSS3扩充的语言，改进Scss）
+		1.2、Compass（一个非常丰富的样式框架，包括大量定义好的mixin，函数，以及对SASS的扩展）
+		1.3、Twitter Bootstrap（基于HTML、CSS和JavaScript的简洁灵活的流行前端框架及交互组件集）
+		1.？、推荐使用SASS+Compass+Twitter Bootstrap+bootstrap-sass
+	2、WebFramework
+		2.1、Bootstrap
+	3、JavaScript
 		3.1、JQuery
 		3.2、常用Javascript框架
-	4、NodeJS（一种JavaScript运行环境）
-	5、JSP									
+		3.3、NodeJS（一种JavaScript运行环境）
+			3.3.1、CommonJS是一种规范，NodeJS是这种规范的实现
+	5、JSP
 	6、Ajax
 	7、JSON
-	8、WebSocket协议（一种HTML5的新协议，实现了浏览器与服务器全双工通信(full-duple)）
+
+	？、Tools
+		9.1、Yeoman
+			9.1.1、yo（脚手架工具）
+			9.1.2、grunt（一个用于开发任务自动化的命令行工具）
+			9.1.3、bower（一个HTML、CSS、Javascript和图片等前端资源的包管理器）
 
 二、数据库开发：
-	1、SQL
-	2、MYSQL									
-	3、Oracle
-		3.1、Oracle Weblogic中间件
-	4、DB2									
-	5、PL/SQL
-	6、SQL调优、分库分表、数据迁移
-	7、索引优化、性能优化
-	8、NoSQL（设计（集群设计）、开发、测试、维护和调优）
+	1、PL/SQL
+	2、关系型
+		2.1MYSQL
+		2.2、Oracle
+		2.3、DB2
+	3、调优与优化
+		SQL调优
+		分库分表
+		数据迁移
+		索引优化
+		性能优化
+	4、NoSQL（设计（集群设计）、开发、测试、维护和调优）
 		8.1、MongoDb
 		8.2、Redis
-	9、消息队列
-	10、数据库设计模式
+
+	？、数据库设计模式
 
 
 三、服务器端开发：
 	1、Java-《学Java》
 		1.1、JSDK源码
-		1.2、高并发/分布式网络通信/jvm调优
-		1.3、多线程
+		1.2、JVM
+		1.3、并发、多线程
 		1.4、IO
 		1.5、集合
-	2、常见服务器使用
-		2.1、Linux
-		2.2、常见linux命令、shell编程
-	3、消息中间件
-		kafka
-	4、hadoop,spark,storm，hbase
-	5、JavaEES7体系
+
+	2、JavaEES7体系
+		2.1、安装与部署（JavaEE7 SDK、NetBeans）
+		2.2、
+
+	3、Linux/Unix
+		2.1、安装与环境搭建（CentOS、Ubuntu ）
+		2.2、常见命令/shell编程：
+			《CentOS最常用命令及快捷键整理》
+			《Ubuntu常用命令大全》
+		3.3、Web服务器（专门处理HTTP请求(request)）
+			3.3.1、IIS
+			3.3.2、 Apache
+		3.4、应用服务器（通过很多协议来为应用程序提供(serves)商业逻辑(business logic)）
+			3.4.1、Weblogic
+			3.4.2、Tomcat
+			3.4.3、Jboss
 
 
 四、开源框架：（要求源码级的深入研究和理解）
 	1、IBatis
-		1.1、MyBatista
-	2、Spring3.X	
+		1.1、MyBatis
+	2、Spring3.X
 		2.1、SpringMVC
 	3、Struts
 	4、servlet
 	5、rpc框架
 
 五、设计模式与算法：
-	1、设计模式 								
+	1、设计模式
 	2、算法
-	3、数据结构									
+	3、数据结构
 
 
 六、其他：
@@ -65,4 +89,4 @@
 	3、软件技术文档
 	4、数据建模
 	5、UML建模语言
-
+	6、Git（GitHub）

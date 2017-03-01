@@ -39,7 +39,7 @@ Comarator 位于包java.util下
 	PersonComparator comparator= new PersonComparator();
 	comparator.comp    are(person1,person2);
 
-Comparable位于包 java.lang下                                                  
+Comparable位于包 java.lang下
 	Comparable接口是你要是定义的类要实现的一个接口（如果这个类的实例需要和同一类的别的实例比较大小，
 	而这个大小关系你希望是你自己定义的），它只提供了 int compareTo(T o)方法
 	person1.comparTo(person2)
@@ -56,20 +56,23 @@ Set接口
 2、TreeSet
 	底层存储使用NavigableMap，实际使用TreeMap
 	所有元素根据指定排序规则保持有序状态
-	
+
 
 Map
 包含一个Entry接口
 实现类：
-1、HashMap implement Map
+1、HashMap
 	包含一个实现Map.Entry接口的内部类Node，即为键值对
 	实际存储在Node[] table中
-
 
 2、TreeMap
 	树的存储方式：红黑树，自平衡二叉查找树，即每个节点的值，>=左子树，<=右子树，且左右高度差不超过1
 	所有Entry总是按key根据指定排序规则保持有序状态
 	存取元素时要遍历
+
+3、Hashtable
+	线程安全
+
 
 
 List
@@ -85,12 +88,10 @@ List
 	链式存储的线性表，相当于双向链表，实现了List，Deque，故还可以当做队列或栈使用
 
 
-3、Vector
-	实际存储：Object[] elementData
-	线程安全，基本方法都synchronized
-	元素个数：变量elementCount
+3、Vector   实际存储：Object[] elementData   线程安全，基本方法都synchronized
+元素个数：变量elementCount
 
-	
+
 
 接口（interface）的特征
 1、接口中的方法可以有参数列表和返回类型，单不能有任何方法体
@@ -101,18 +102,32 @@ List
 6、如果没有实现接口中所有方法，那么创建的仍然是一个接口
 7、扩展一个接口来生成新的接口应使用关键字extends，实现一个接口使用implement
 
-Java抽象类和Java接口的比较
-1、抽象类可以提供实现方法，接口不能提供
-2、抽象类只能继承一个，而可以实现多个接口
+Java抽象类和Java接口的比较：
+1、一个类可以实现多个接口，但却只能继承最多一个抽象类
+2、抽象类可以包含具体方法；接口的所有方法都是抽象的
+3、抽象类可以声明和使用字段；接口则不能，但可以创建静态的final常量
+4、抽象类中的方法可以是public、protected、private或者默认的package；接口方法都是public
+5、抽象类可以定义构造函数；接口不能
 
 
 
+序列化：
+	可以将一个对象保存到一个文件，所以可以通过流的方式在网络上传输，可以将文件的内容读取，转化为一个对象。
+	处理对象流的机制，所谓对象流也就是将对象的内容进行流化。可以对流化后的对象进行读写操作，也可将流化后的对象
+传输于网络之间。序列化是为了解决在对对象流进行读写操作时所引发的问题。
+
+序列化的实现：
+	将需要被序列化的类实现Serializable接口，该接口没有需要实现的方法，implementSerializable只是为了标注该对象
+是可被序列化的，然后使用一个输出流（如：FileOutputStrean）来构造一个ObjectOutputStream（对象流）对象，接着，使用ObjectOutputStream对象的writeObject(Object obj)方法就可以将参数为obj的对象写出（即保存期状态），要恢复的话则用输入流。
 
 
 
+同步：上一段代码没有完成，下一段必须等到上一段代码完成后才可以执行。	如买票排队
+异步：上一段代码没有完成，下一段不必等到上一段代码完成就可以执行。如手机发短信。
 
 
-
+sleep()：是指休眠给定的时间，当这个时间达到之后，线程会再次醒来。
+wait()：是等待状态，多长时间不清楚，由另一个线程将其唤醒。
 
 
 
