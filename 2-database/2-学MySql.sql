@@ -1,5 +1,26 @@
-﻿SHOW DATABASES;
+﻿--Ubuntu安装
+sudo apt-get install mysql-server
+sudo apt-get install mysql-client
+sudo apt-get install libmysqlclient-dev
+--验证
+sudo netstat -tap | grep mysql
+--检查
+ps -ef | grep mysqld
+--启动
+sudo service mysql start
+--停止
+sudo service mysql stop
+--重启
+sudo service mysql restart
+--登录
+mysql -u root -p
+
+
+--查询数据库
+SHOW DATABASES;
+--删除数据库
 DROP DATABSES IF EXISTS TEST;
+--创建数据库
 CREATE DATABASE TEST;
 
 USE TEST;

@@ -1,4 +1,46 @@
 Ubuntu常用命令大全
+中文输入
+    安装语言包
+    System Settings–>Language Support–>Install/Remove Languages
+    选中chinese，点击Apply应用即可，等待下载安装完成。
+
+    安装ibus框架
+    sudo apt-get install ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4
+    启动ibus框架：im-config -s ibus  需重启
+
+    安装拼音引擎
+    我用的是IBus拼音：sudo apt-get install ibus-pinyin
+
+    设置ibus框架
+    sudo ibus-setup 选中input method，Add
+
+    设置里边，选到Text Entry，点击左下角的加号，把自己要用的输入法添加进来
+
+如果已知软件使用apt-get install命令安装的，可以使用这种方法查看软件安装目录
+    dpkg -L chromium-browser
+
+--启动服务
+sudo service mongodb start
+--停止服务
+sudo service mongodb stop
+--重启服务
+sudo service mongodb restart
+--查看服务
+sudo service mongodb state
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 一、文件/文件夹管理
 
