@@ -35,9 +35,9 @@ Java多态的实现
 
 Comarator 位于包java.util下
 	Comparator是一个比较器，相当于一种工具，
-	它定义了俩个方法，分别是 int compare(T o1, T o2)和 boolean (Object obj)
+	它定义了俩个方法，分别是 int compare(T o1, T o2)和 boolean equals(Object obj)
 	PersonComparator comparator= new PersonComparator();
-	comparator.comp    are(person1,person2);
+	comparator.compare(person1,person2);
 
 Comparable位于包 java.lang下
 	Comparable接口是你要是定义的类要实现的一个接口（如果这个类的实例需要和同一类的别的实例比较大小，
