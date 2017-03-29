@@ -1,0 +1,22 @@
+什么是集群？
+集群（cluster）就是一组计算机，它们作为 一个整体向用户提供一组网络资源。这些 单个的计算机系统就是集群的节点 （node）。
+
+PV（page view）即页面浏览量，通常是衡量一个网络新闻频道或网站甚至一条网络新闻的主要指标。网页浏览数是评价网站流量最常用的指标之一，简称为PV。
+
+uv(unique visitor)，指访问某个站点或点击某条新闻的不同IP地址的人数。
+
+集群系统主要分为
+LB  – 负载均衡(Load Balance)集群
+HA 高可用(High Availability)集群
+HPC  高性能计算(High Perfermance Computing)集群
+
+LB实现手段
+LVS(Linux Virtual Server)
+LVS是Linux Virtual Server的简写，意即Linux虚拟服务器，是一个虚拟的服务器集群系统。本项目在1998年5月由章文嵩博士成立，是中国国内最早出现的自由软件项目之一。
+官网：http://www.linuxvirtualserver.org/
+中文站点：http://zh.linuxvirtualserver.org/
+
+LVS(4层) 分3个 模式：
+/VS/NAT
+LVS-VS/DR
+   \VS/TUN
