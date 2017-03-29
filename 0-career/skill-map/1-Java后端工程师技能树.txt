@@ -1,0 +1,116 @@
+
+Java后端工程师
+
+软件过程：
+        敏捷开发Scrum
+        测试驱动
+        持续集成
+日常：
+        版本管理： Git GitFlow
+        代码审核：Pull request
+        工具：GitHub
+        编辑器：Emacs Vim Sublime
+
+运行环境：IaaS平台
+        虚拟化管理：
+                VPS：OpenStack cloudfoundry
+                容器技术：Docker
+        Linux：
+                发行版：RedHat Ubuntu CentOS
+                常用Shell命令
+                性能分析：top vmstat iostat sar dstat
+                服务配置
+        WebServer：
+                Nginx
+                Tomcat
+        负载均衡：LVS Haproxy Nginx/Tengine
+
+Java编程
+        DE：Eclipse Intellij
+        核心语法：Java678
+        高级特性：
+                并发编程
+                泛型：协变&逆变
+                Socket、网络编程
+                NIO1&2
+                序列化
+                RPC
+        集合类
+        工具类
+        JavaEE
+        包管理
+        框架
+                Web：Spring SpringMVC MyBatis
+                API
+        测试：
+                单元测试
+                黑盒测试
+            白盒测试
+
+JVM
+        虚拟机实现
+        类加载机制
+        运行时内存
+        内存模型
+        GC原理和优化、垃圾回收器
+        性能调优
+
+消息队列
+
+微服务
+
+数据
+        高速缓存：Redis
+        数据库
+                NOSQL：MongoDB
+                SQL：MySQL
+                安全：SQL注入
+        搜索引擎
+        存储和分析：Hadoop、Spark、Storm、Spark mlib
+        数据同步：Sqoop、Canal、MySQL-Binlog
+
+协议
+        TCP/IP
+        HTTP
+        SMTP
+
+算法：
+        容器：
+                字符串：类型转换、查找、翻转、匹配、正则表达式
+                数据：查找、多维数组
+                链表：翻转、遍历、查找、删除、合并
+                哈希表：查找
+                树：遍历（前中后序）、高级树查找（红黑树、B树、R树）
+                堆
+                图
+                函数：递归、迭代
+        业务相关算法
+                压缩算法
+                LRU
+                最终一致性
+                编译原理
+                机器学习
+        排序&查找经典算法
+
+设计模式
+        工厂模式
+        单例模式
+        观察者模式
+        代理模式
+        建筑者模式
+        装饰器模式
+        适配器模式
+        门面模式
+
+第三方服务
+        CDN加速
+        邮件发送
+        短信发送
+        消息推送
+        开放平台
+        支付接口
+
+域名
+        服务商
+        备案
+        DNS

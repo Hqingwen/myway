@@ -1,7 +1,7 @@
 
-/**
+/*****************************************************************************
  * 适配器模式
- */
+ *****************************************************************************/
 //1、定义顶层接口
 public interface ClassName1{
     public void func1();
@@ -20,9 +20,9 @@ public class ClasName3 extends ClassName2 implements ClassName1{
 
 
 
-/**
+/*****************************************************************************
  * 单例模式
- */
+ *****************************************************************************/
 public class Singleton{
     public  Singleton(){}
     //饿汉式
@@ -71,16 +71,50 @@ public class Singleton{
 //枚举单例
 public enum Singleton{
     INSTANCE;
-    ....
+    public void otherFunction(){}
 }
 
-
-
-
-
-
-
-
+/*****************************************************************************
+ * 工厂模式：定义一个创建对象的接口， 让其子类自己决定实例化哪一个工厂类，
+ *                 工厂模式使其创建过程延迟到子类进行。
+ *****************************************************************************/
+interface  Shape
+{
+    public void draw();
+}
+Class Circle implements Shape
+{
+    public void draw(){
+        System.out.println("The Circle is draw.");
+    }
+}
+Class Square implements Shape
+{
+    public void draw(){
+        System.out.println("The Square is draw.");
+    }
+}
+Class Rectangle implements Shape
+{
+    public void draw(){
+        System.out.println("The Rectangle is draw.");
+    }
+}
+Class ShapeFactory
+{
+    public Shape getShape(String shapeType){
+        if(shapeType == null){
+            return null;
+        }else if(shapeType.equalsIgnoreCase("CIRCLE")){
+            return new Circle();
+        }else if(shapeType.equalsIgnoreCase("SQUARE")){
+            return new Square();
+        }else if(shapeType.equalsIgnoreCase("RECTANGLE")){
+            return new Rectangle();
+        }
+        return null;
+    }
+}
 
 
 
