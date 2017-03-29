@@ -1,23 +1,17 @@
 /**************************************************************************************
 技术名称：SQL 结构化查询语言 Structured Query Language		  			
-创建时间：2016/3/
+创建时间：2016-03
 使用说明：适用于DB2语法结构
-**************************************************************************************/
-/**************************************************************************************
+
 替代词解释：
-
-表中 		tablename
-新表名		new_tablename
-
-字段名		columnname
-新字段名	new_columnname
-
-字段类型	datatype
-
-用户名		username
+	表中 		tablename
+	新表名		new_tablename
+	字段名		columnname
+	新字段名	new_columnname
+	字段类型	datatype
+	用户名		username
 
 **************************************************************************************/
-
 
 --创建表
 CREATE TABLE tablename
@@ -36,23 +30,29 @@ COMMIT;
 
 --修改表名
 ALTER TABLE tablename RENAME TO new_tablename;
-
+--DB2
 RENAME TABLE "M1_WE"."SU_WE_SY000" TO SU_WE_SY00;
-
---修改字段名
-ALTER TABLE tablename RENAME  COLUMN columnname TO new_columnname ;
 
 --增加列
 ALTER TABLE tablename ADD COLUMN columnname datatype;
+--删除列
+ALTER TABLE tablename DROP COLUMN columnname;
 
+--修改字段名
+ALTER TABLE tablename RENAME  COLUMN columnname TO new_columnname ;
 --修改列属性
 ALTER TABLE tablename ALTER COLUMN columnname SET DATA TYPE datatype;  
+--例如：
+ALTER TABLE W1_QM.WH_QMCB0011 ALTER COLUMN SAMPE_DSCR SET NOT NULL;
 
---删除表字段 
-ALTER TABLE tablename DROP COLUMN columnname;
+--增加主键约束
+ALTER TABLE tablename ADD PRIMARY KEY (columnname,columnname2,...);
+--删除主键约束
+ALTER TABLE tablename DROP PRIMARY KEY;
 
 --修改完后需要命令进行表重组，否则select的时候会报错：
 REORG TABLE tablename;
+COMMIT;
 
 --SQL连接类型
 INNER JOIN			--如果表中有至少一个匹配，则返回行
@@ -61,18 +61,14 @@ RIGHT JOIN			--即使左表中没有匹配，也从右表返回所有的行
 FULL JOIN				--只要其中一个表中存在匹配，则返回行
 
 
---UNION：对两个结果集进行并集操作，不包括重复行，同时进行默认规则的排序； 
---UNION ALL：对两个结果集进行并集操作，包括重复行，不进行排序； 
---INTERSECT：对两个结果集进行交集操作，不包括重复行，同时进行默认规则的排序； 
---EXCEPT：对两个结果集进行差操作，不包括重复行，同时进行默认规则的排序。
---例：
-SELECT columnname(s) FROM tablename1
-UNION
-SELECT columnname(s) FROM tablename2
+UNION				--对两个结果集进行并集操作，不包括重复行，同时进行默认规则的排序； 
+UNION ALL		--对两个结果集进行并集操作，包括重复行，不进行排序； 
+INTERSECT		--对两个结果集进行交集操作，不包括重复行，同时进行默认规则的排序； 
+EXCEPT			--对两个结果集进行差操作，不包括重复行，同时进行默认规则的排序。
 
---UNIQUE 约束唯一标识数据库表中的每条记录。
+UNIQUE 			--约束唯一标识数据库表中的每条记录。
+PRIMARY KEY 		--拥有自动定义的 UNIQUE 约束。
 --UNIQUE 和 PRIMARY KEY 约束均为列或列集合提供了唯一性的保证。
---PRIMARY KEY 拥有自动定义的 UNIQUE 约束。
 --请注意，每个表可以有多个 UNIQUE 约束，但是每个表只能有一个 PRIMARY KEY 约束。
 --如果需要命名 UNIQUE 约束，以及为多个列定义 UNIQUE 约束，请使用下面的 SQL 语法：constraint
 --例：
@@ -86,10 +82,6 @@ CREATE TABLE Persons
 	CONSTRAINT uc_PersonID UNIQUE (Id_P,LastName)
 );
 
---添加主键
-ALTER TABLE tablename ADD PRIMARY KEY(columnname(,columnname2));
-ALTER TABLE tablename DROP PRIMARY KEY
---主键删除
 
 --增加 HAVING 子句原因是，WHERE 关键字无法与合计函数一起使用
 --例：
@@ -100,6 +92,11 @@ FROM Orders
 WHERE Customer='Bush' OR Customer='Adams'
 GROUP BY Customer
 HAVING SUM(OrderPrice)>1500
+
+
+
+
+
 
 
 
