@@ -4,11 +4,11 @@
 使用说明：适用于DB2语法结构
 
 替代词解释：
-	表中 		tablename
+	表中 			tablename
 	新表名		new_tablename
 	字段名		columnname
-	新字段名	new_columnname
-	字段类型	datatype
+	新字段名		new_columnname
+	字段类型		datatype
 	用户名		username
 
 **************************************************************************************/
@@ -65,6 +65,7 @@ UNION				--对两个结果集进行并集操作，不包括重复行，同时进
 UNION ALL		--对两个结果集进行并集操作，包括重复行，不进行排序； 
 INTERSECT		--对两个结果集进行交集操作，不包括重复行，同时进行默认规则的排序； 
 EXCEPT			--对两个结果集进行差操作，不包括重复行，同时进行默认规则的排序。
+
 
 UNIQUE 			--约束唯一标识数据库表中的每条记录。
 PRIMARY KEY 		--拥有自动定义的 UNIQUE 约束。
