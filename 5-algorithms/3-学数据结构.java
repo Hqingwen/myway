@@ -3,24 +3,19 @@
  * @author HQW
  * @version 0.0.1
  */
-public class Node{
+public class Node<T>{
 
-    private Object data;
+    private T data;
     private Node next;
 
-    public Node(){
-        this.data = null;
-        this.next = null;
-    }
-    public Node(Object data,Node next){
+    public Node(T data){
         this.data = data;
-        this.next = next;
     }
 
-    public void setData(Object data){
+    public void setData(T data){
         this.data = data;
     }
-    public Object getData(){
+    public T getData(){
         return this.data;
     }
     public void setNext(Node next){
@@ -31,7 +26,7 @@ public class Node{
     }
 
     public String toString(){
-        rerturn "[\"data\":"+this.data.toString()+",\"next\":"+this.next+"]";
+        return "{\"data\":"+this.data+",\"next\":"+this.next+"}";
     }
 }
 
@@ -40,57 +35,70 @@ public class Node{
  * @author HQW
  * @version 0.0.1
  */
-public class DNode(){
+public class DNode<T>{
 
-    private Object data;
+    private T data;
     private DNode prev;
     private DNode next;
 
-    public DNode(){
-        this.data = null;
-        this.prev = null;
-        this.next = null;
-    }
-    public DNode(Object data, DNode prev, DNode next){
+    public DNode(T data){
         this.data = data;
-        this.prev = prev;
-        this.next = next;
     }
 
-    public void setData(Object data){
-        this.data = data;
-    }
-    public Object getData(){
-        return this.data;
-    }
     public void setPrev(DNode prev){
         this.prev = prev;
     }
     public DNode getPrev(){
         return this.prev;
     }
+    public void setData(T data){
+        this.data = data;
+    }
+    public T getData(){
+        return this.data;
+    }
     public void setNext(DNode next){
         this.next = next;
     }
-    public Dnode getNext(){
-        return this,next;
+    public DNode getNext(){
+        return this.next;
     }
 
     public String toString(){
-        rerturn "{\"data\":["+this.data.toString()+"], \"prev\":["+this.next++"], \"next\":["+this.next+"]}";
+        return this.prev+" -> {"+this.data+"} -> "+this.next;
     }
 }
 
 /**
- * 单链表
+ * 单链表（后置法）
  * @author HQW
  * @version 0.0.1
  */
-public class NodeList
+public class NodeList<T>{
+    private Node head;
+    private int length;
 
+    public NodeList(Node head){
+        this.head = head;
+        this.length = 1;
+    }
 
-
-
+    public boolean isEmpty(){
+        return this.length==0;
+    }
+    public void insertNode(T data){
+        Node node = new Node(data);
+        node.next = this.head;
+        this.head = node;
+    }
+    public Node deleteNode(){
+        Node node = this.head;
+        if(!isEmpty){
+            this.head = this.head.next;
+        }
+        return node;
+    }
+}
 
 /**
  * 栈
@@ -100,9 +108,7 @@ public class NodeList
 public class Stack {
 
     Object[] data;
-
     int maxSize;
-
     int top;
 
     public Stack(int maxSize) {
