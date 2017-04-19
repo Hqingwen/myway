@@ -1,4 +1,7 @@
-﻿--Ubuntu安装
+/******************************************
+* 环境：Ubuntu
+******************************************/
+--安装
 sudo apt-get install mysql-server
 sudo apt-get install mysql-client
 sudo apt-get install libmysqlclient-dev
@@ -16,17 +19,29 @@ sudo service mysql restart
 mysql -u root -p
 
 
+/******************************************
+* 基本语法
+******************************************/
 --查询数据库
 SHOW DATABASES;
+
 --删除数据库
-DROP DATABSES IF EXISTS TEST;
+DROP DATABSES [ IF EXISTS dbName ];
+
 --创建数据库
-CREATE DATABASE TEST;
+CREATE DATABASE dbName;
 
-USE TEST;
+--选择数据库
+USE dbName;
+
+--查询所有表
 SHOW TABLES;
-DROP TABLE IF EXISTS USER;
 
+--删除表
+DROP TABLE [ IF EXISTS tableName ];
+
+--创建表
+--AUTO_INCREMENT 自动增长
 CREATE TABLE USER(
     ID INT NOT NULL AUTO_INCREMENT,
     USERNAME VARCHAR(20) NOT NULL,
@@ -35,9 +50,11 @@ CREATE TABLE USER(
     PRIMARY KEY(ID)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--插入语句（多条）
 INSERT INTO USER(USERNAME,PASSWORD,CREDITS)
 VALUES
 ('张三','111111',100),
 ('李四','222222',100),
 ('王五','333333',100),
 ('赵六','444444',100);
+
