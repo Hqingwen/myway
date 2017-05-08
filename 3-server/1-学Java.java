@@ -3,7 +3,7 @@ Q：Java基本数据类型？
 
 Q：Java事件委托机制？
 概念：一个源产生一个事件并将它送到一个或多个监听器那里。
-在这种方案中，监听器简单的等待，知道它收到一个事件。一旦事件被接受，监听器将处理这个事件，然后返回。
+在这种方案中，监听器简单的等待，直到它收到一个事件。一旦事件被接受，监听器将处理这个事件，然后返回。
 
 
 Q：Java垃圾回收机制？
@@ -39,7 +39,7 @@ Q：重写与重载的区别？
 重写（Override）：子类覆盖父类的方法，将子类传与父类的引用调用的还是子类的方法。
 
 
-Q：Comarator与Comparable的区别？
+Q：Comparator与Comparable的区别？
 1、比较器Comparator 位于包java.util下，相当于一种工具，它定义了两个方法，
 	分别是 int compare(T o1， T o2) 和 boolean equals(Object obj)
 	用法：PersonComparator comparator= new PersonComparator(); comparator.compare(person1，person2);
@@ -270,7 +270,7 @@ Q：java.util包下有哪些工具类
 java.util.concurrent.Callable<V>
 java.util.Calendar
 java.util.concurrent.locks.ReentrantLock
-java.util.Collection<E>
+java.util.Collections<E>
 java.util.Formatter
 java.util.Enumeration<E>
 java.util.HashSet<E>
@@ -381,11 +381,11 @@ Q：什么是类的返射机制？
 
 Q：类的返射机制中的包及核心类？
 java.lang.Class
-java.lang.refrection.Method
-java.lang.refrection.Field
-java.lang.refrection.Constructor
-ava.lang.refrection.Modifier
-java.lang.refrection.Interface
+java.lang.refrect.Method
+java.lang.refrect.Field
+java.lang.refrect.Constructor
+ava.lang.refrect.Modifier
+java.lang.refrect.Interface
 
 
 Q：获取Class实例的三种方式：
@@ -455,12 +455,15 @@ Q：Java异常？
 该类代表错误，指程序无法恢复的异常情况。对于所有错误类型以及其子类，都不要求程序进行处理。
 常见的Error类例如内存溢出StackOverflowError等。
 2、Exception类
-该类代表异常，指程序有可能恢复的异常情况。该类就是整个Java语言异常类体系中的父类。使用该类，可以代表所有异常的情况。
+该类代表异常，指程序有可能恢复的异常情况。该类就是整个Java语言异常类体系中的父类。
+使用该类，可以代表所有异常的情况。
 
 Exception下除了RuntimeException，其它的是受检查的异常(checked exceptions),
 其必须被 try{}catch语句块所捕获,或者在方法签名里通过throws子句声明.
-受检查的异常必须在编译时被捕捉处理,命名为 Checked Exception 是因为Java编译器要进行检查,Java虚拟机也要进行检查,以确保这个规则得到遵守.
-RuntimeException的异常是运行时异常(runtime exceptions),需要程序员自己分析代码决定是否捕获和处理,比如 空指针,被0除...
+受检查的异常必须在编译时被捕捉处理,命名为 Checked Exception 是因为Java编译器要进行检查,
+Java虚拟机也要进行检查,以确保这个规则得到遵守.
+RuntimeException的异常是运行时异常(runtime exceptions),需要程序员自己分析代码决定是否捕获和处理,
+比如 空指针,被0除...
 
 声明为Error的，则属于严重错误,需要根据业务信息进行特殊处理,Error不需要捕捉。
 
@@ -471,7 +474,7 @@ Throwable  |- Error
                                                                          		|-    UnknowHostException
                                                                         		|-    EOFException
                                                  |-    ClassNotFound
-                                                 |-    cloneNotSupported    Exception
+                                                 |-    CloneNotSupportedException
                                                  |-    RuntimeException    	|-    AirthmeticException
                                                                                     		|-    IllegalArgumentException
                                                                                     		|-    IndexOutOfBoundsException
