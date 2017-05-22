@@ -55,12 +55,14 @@ public enum Singleton{
 
 /*****************************************************************************
  * 工厂模式：定义一个创建对象的接口， 让其子类自己决定实例化哪一个工厂类，
- *                 工厂模式使其创建过程延迟到子类进行。
+ *                    工厂模式使其创建过程延迟到子类进行。
  *****************************************************************************/
 interface  Shape{}
 class Circle implements Shape{}
 class Square implements Shape{}
 class Rectangle implements Shape{}
+
+//工厂类
 class ShapeFactory{
     public Shape getShape(String shapeType){
         if(shapeType.equalsIgnoreCase("CIRCLE")){
@@ -81,14 +83,18 @@ interface  Shape{}
 class Circle implements Shape{}
 class Square implements Shape{}
 class Rectangle implements Shape{}
+
 interface Color{}
 class Red implements Color{}
 class Blue implements Color{}
 class Green implements Color{}
+
+//工厂抽象类
 abstract class AbstractFactory{
     abstract Color getColor(String color);
     abstract Shape getShape(String shape);
 }
+
 class ColorFactory implements AbstractFactory{
     public Color getColor(String color){
         if(color.equalsIgnoreCase("RED")){
@@ -105,6 +111,7 @@ class ColorFactory implements AbstractFactory{
         return null;
     }
 }
+
 class ShapeFactory implements AbstractFactory{
     Color getColor(String color){
         return null;
@@ -120,6 +127,8 @@ class ShapeFactory implements AbstractFactory{
         return null;
     }
 }
+
+//工厂的工厂
 class FactoryProducer{
     public static AbstractFactory getFactory(String choice){
         if(choice.equalsIgnoreCase("SHAPE")){
@@ -134,11 +143,14 @@ class FactoryProducer{
 /*****************************************************************************
  * 建造者模式：创建一个复杂对象，其通常是由各个部分的子对象用一定的算法构成
  *****************************************************************************/
-interface FoodItem{
+//二级对象接口
+interface Item{
     public String name();
     public Packing packing();
     public float price();
 }
+
+//一级对象接口
 interface Packing{
     public String pack();
 }
@@ -152,15 +164,11 @@ class Bottle implements Packing{
         return "Bottle";
     }
 }
-abstract class Burger implements FoodItem{
+
+//实现二级对象接口的抽象类1
+abstract class Burger implements Item{
     public Packing packing(){
         return new Wrapper();
-    }
-    public abstract float price();
-}
-abstract class ColdDrink implements FoodItem{
-    public Packing packing(){
-        return new Bottle();
     }
     public abstract float price();
 }
@@ -180,6 +188,14 @@ class ChickenBurger extends Burger{
         return "Chicken Burger";
     }
 }
+
+//实现二级对象接口的抽象类2
+abstract class ColdDrink implements Item{
+    public Packing packing(){
+        return new Bottle();
+    }
+    public abstract float price();
+}
 class Pepsi extends ColdDrink{
     public float price(){
         return 25.0f;
@@ -189,9 +205,47 @@ class Pepsi extends ColdDrink{
     }
 }
 
+//三级对象
+class Meal {
+    private List<Item> items = new ArrayList<Item>();
+    public void addItem(Item item){
+        items.add(item);
+    }
+    public folat getCost(){
+        float cost = 0.0f;
+        for(Item item : items){
+            cost += item.price();
+        }
+        return cost;
+    }
+    public void showItems(){
+        for(Item item : items){
+            ....
+        }
+    }
+}
+
+//最终对象建造类
+class MealBuilder {
+    public Meal PrepareVegMeal(){
+        Meal meal = new Meal();
+        meal.addItem(new VegMeal());
+        meal.addItem(new Coke());
+        return meal;
+    }
+    public Meal PrepareNonVegMeal(){
+        Meal meal = new Meal();
+        meal.addItem(new ChickenBurger());
+        meal.addItem(new Pepsi());
+        return meal;
+    }
+}
+
+
 /*****************************************************************************
  * 原型模式：用于创建重复的对象
  *****************************************************************************/
+//实现Cloneable接口的抽象类
 abstract class Shape implements Cloneable{
     ......
     public Object clone(){
@@ -204,9 +258,11 @@ abstract class Shape implements Cloneable{
         return clone;
     }
 }
-class Rectangle extends Shape{}
-class Square extends Shape{}
-class Circle extends Shape{}
+class Rectangle extends Shape{.....}
+class Square extends Shape{.....}
+class Circle extends Shape{.....}
+
+//包含需要创建对象的缓冲类
 class ShapeCache{
     private static Hashtable<String, Shape> shapeMap = new Hashtable<String, Shape>();
     public static Shape getShape(String shape){
@@ -214,13 +270,146 @@ class ShapeCache{
         return (Shape)cacheShape.clone();
     }
     public static void loadCache(){
-        shapeMap.pur("1",new Rectangle());
-        shapeMap.pur("2",new Square());
-        shapeMap.pur("3",new Circle());
+        shapeMap.put("1",new Rectangle());
+        shapeMap.put("2",new Square());
+        shapeMap.put("3",new Circle());
     }
 }
 
 /*****************************************************************************
- * 适配器模式
+ * 适配器模式：
+ * 例子：内存卡-读卡器-笔记本  ，读卡器就是适配器
  *****************************************************************************/
+//高级类接口及其实现
+interface AdvancedMediaPlayer{
+    public void playVlc(String fileName)；
+    public void playMp4(String fileName)；
+}
+class VlcPlayer implements AdvancedMediaPlayer{
+    public void playVlc(String fileName){
+        .....
+    }
+    public void playMp4(String fileName){}
+}
+class Mp4Player implements AdvancedMediaPlayer{
+    public void playVlc(String fileName){}
+    public void playMp4(String fileName){
+        .....
+    }
+}
+
+//普通类接口
+interface MediaPlayer{
+    public void play(String audioType, String fileName);
+}
+
+//实现普通类接口的适配器
+class MediaAdapter implements MediaPlayer{
+    AdvancedMediaPlayer advancedMediaPlayer;
+    public MediaAdapter(String audioType){
+        if(audioType.equalsIgnoreCase("VLS")){
+            advancedMediaPlayer = new VlcPlayer();
+        }else if(audioType.equalsIgnoreCase("MP4")){
+            advancedMediaPlayer = new Mp4Player();
+        }
+    }
+    public coid play(String audioType, String fileName){
+        if(audioType.equalsIgnoreCase("VLS")){
+            advancedMediaPlayer.playVlc(fileName);
+        }else if(audioType.equalsIgnoreCase("MP4")){
+            advancedMediaPlayer.playMp4(fileName);
+        }
+    }
+}
+
+//实现普通类接口的高级类，且其包含了上述适配器
+class AudioPlayer implements MediaPlayer{
+    MediaAdapter mediaAdapter;
+    public coid play(String audioType, String fileName){
+        if(audioType.equalsIgnoreCase("MP3")){
+            ......
+        }else if(audioType.equalsIgnoreCase("VLS")
+            || audioType.equalsIgnoreCase("MP4")){
+            mediaAdapter = new MediaAdapter(audioType);
+            mediaAdapter.play(audioType, fileName);
+        }else{
+            ......
+        }
+    }
+}
+
+/*****************************************************************************
+ * 桥接模式
+ *****************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
