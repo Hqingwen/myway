@@ -50,6 +50,20 @@ CREATE TABLE USER(
     PRIMARY KEY(ID)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+--数据库 数据表字典 SQL查询语句：  
+SELECT 
+	COLUMN_NAME '字段名称',
+	LEFT(COLUMN_COMMENT,LOCATE('】',COLUMN_COMMENT)) '业务分类',
+	COLUMN_TYPE '数据类型',
+	IS_NULLABLE '允许为空',
+	COLUMN_DEFAULT '缺省值',  
+	SUBSTRING(COLUMN_COMMENT FROM LOCATE('】',COLUMN_COMMENT)+1) '字段说明' 
+FROM information_schema.columns 
+WHERE table_name='order_info' and  table_schema = 'mengdian_order_0' 
+ORDER BY LEFT(COLUMN_COMMENT,LOCATE('】',COLUMN_COMMENT));  
+
+
 --插入语句（多条）
 INSERT INTO USER(USERNAME,PASSWORD,CREDITS)
 VALUES

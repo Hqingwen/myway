@@ -556,4 +556,76 @@ SQL0262N 表格 "<table-name>" 只有 LONG 類型直欄，無法在多節點節點群組 "<nodegrou
 sqlcode: -262 
 
 sqlstate: 428A2 
+
+"***" is a duplicate name.  SQLSTATE=42711
+-----------该字段重复出现
+"***" is not valid in the context where i"
+-----------该字段没有
  
+ 
+DB2语句学习：
+找出m1_qm.su_qm_sm01中含有试样废的所有数据
+select * from m1_qm.su_qm_sm01 where qm_detail_type like '试样废%';
+
+维护画面数值型字段在画面中只有整数部分，可能原因如下：
+domain中的frommap和tomap将数值转换成了字符型，所以被取整
+
+维护画面自动添加序号；
+select ROW_NUMBER() over() as a, wh_wemz0001.* from wh_wemz0001 where project_id like 1.1||'%'
+
+WEEAAD001
+
+大院做质量成本的开发模式：
+BIFA00：画面注册
+BIRM0201：参数管理()
+
+新建的镀锡板厂：
+将冷轧厂的非C202生产型机组给镀锡板厂；
+将冷轧薄板厂的数据给镀锡板厂；
+
+1282489
+
+data ma_qm.std_cqbu0008_ts1;
+set std_cqbu0008_new;
+run;
+
+data ma_qm.std_cqbu0019_ts1;
+set std_cqbu0019_new;
+run;
+
+data std_cqbu0002;
+set ma_qm.std_cqbu0002;
+run;
+
+data std_cqbu0005;
+set ma_qm.std_cqbu0005;
+run;
+
+
+data std_cqbu0006;
+set ma_qm.std_cqbu0006;
+run;
+
+data std_cqbu0007;
+set ma_qm.std_cqbu0007;
+run;
+
+data std_cqbu0020;
+set ma_qm.std_cqbu0020;
+run;
+
+1285733
+
+4、请将以下程序从测试环境放到正式环境
+/dw/prog/m1_qm/rpdprog/stp_qm_zt_zd01.sas
+/dw/prog/m1_qm/rpdprog/stp_qm_zh_zd01.sas
+/dw/prog/m1_qm/rpdprog/stp_qm_zh_zd02.sas
+/dw/prog/m1_qm/rpdprog/stp_qm_zh_zd03.sas
+/dw/prog/m1_qm/rpdprog/stp_qm_zh_zd04.sas
+/dw/prog/m1_qm/rpdprog/stp_qm_zh_zd05.sas
+/dw/prog/m1_qm/rpdprog/stp_qm_zh_zd08.sas
+/dw/prog/m1_qm/rpdprog/stp_qm_zh_zd10.sas
+
+1290793
+
+1293026
