@@ -1,0 +1,72 @@
+Q：maven常用命令
+1、项目骨架是根据maven项目约定的规则来创建项目目录结构和资源文件。
+1).快速创建项目命令：
+	mvn archetype:generate -DarchetypeCatalog=internal -DgroupId=项目组 -DartifactId=项目名/模块名 -Dversion=1.0-SNAPSHOT -Dpackage=com.*.*  
+
+2).按模板向导创建：
+生成java项目：
+	mvn archetype:generate -DarchetypeCatalog=internal -DarchetypeArtifactId=maven-archetype-quickstart  
+生成web项目：
+	mvn archetype:generate -DarchetypeCatalog=internal -DarchetypeArtifactId=maven-archetype-webapp 
+
+2、常用命令：
+mvn archetype:generate  		构建项目  
+mvn clean       					项目清理  
+mvn compile     				项目源代码的编译  
+mvn test        					项目单元测试的编译  
+mvn package     				项目打包  
+mvn install            				发布项目提交到本地仓库  
+mvn deploy              			发布项目到  
+mvn jetty:run ：        			启动jetty容器    
+mvn eclipse:clean ：    			清除eclipse的一些系统设置             
+mvn eclipse:eclipse ：  		生成 Eclipse 项目文件 
+
+mvn dependency:tree   		查看依赖树  
+mvn assembly:assembly 		需要配assembly插件，可用于把指定文件进行打包 tar.gz,zip包  
+指定maven参数：  
+-DskipTests=true      			默认不走单元测试  
+-P local              					选择资源文件类型 local,需在pom开启资源配置 
+
+
+3、pom.xml元素
+groupId						项目组 ID ，项目坐标的核心元素；    
+version							项目版本，项目坐标的核心元素；    
+description						项目的描述信息；    
+properties						自定义的 Maven 属性；    
+dependencies					项目的依赖配置；    
+dependencyManagement		醒目的依赖管理配置；    
+repositories					项目的仓库配置；    
+build							包括项目的源码目录配置、输出目录配置、插件配置、插件管理配置等； 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
