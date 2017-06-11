@@ -6,7 +6,9 @@ from EMPLOYEE m, (select avg(t.salary) salavg from EMPLOYEE t) n
 where m.salary > n.salavg;
 
 2、女性员工数大于五个人的部门。
-select n.dep from (select count(*)  numb,t.dep  from EMPLOYEE t where t.sex = 'f'  group by t.dep) n where n.numb>5;
+select n.dep from (
+	select count(*)  numb,t.dep  from EMPLOYEE t where t.sex = 'f'  group by t.dep
+) n where n.numb>5;
 
 3、分页语句。
 SELECT * FROM (
