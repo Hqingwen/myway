@@ -1,4 +1,14 @@
 /******************************************
+* 数据推荐
+******************************************/
+数据库索引设计与优化
+《Effective MySQL系列》:
+	Effective MySQL Replication Techniques in Depth
+	Effective MySQL之SQL语句最优化
+	Effective MySQL之备份与恢复
+深入理解MySQL核心技术
+MySQL内核：InnoDB存储引擎
+/******************************************
 * 环境：Ubuntu
 ******************************************/
 --安装
