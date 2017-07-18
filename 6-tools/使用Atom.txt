@@ -1,0 +1,2 @@
+命令框：Ctrl + Shift + P
+显示Mardown界面：Ctrl + Shift + M

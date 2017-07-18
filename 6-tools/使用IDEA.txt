@@ -1,0 +1,3 @@
+插件：
+name：activate-power-mode
+URL：https://github.com/ViceFantasyPlace/activate-power-mode
