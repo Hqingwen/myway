@@ -1,5 +1,6 @@
 
 使用参考：http://www.bkjia.com/Pythonjc/1144780.html
+https://www.cnblogs.com/figure9/p/sublime-text-complete-guide.html
 
 Ubuntu
 --安装

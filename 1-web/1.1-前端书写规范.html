@@ -1,0 +1,1469 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  max-width: 980px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 45px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>1.1-前端书写规范</title></head><body><article class="markdown-body"><div class="toc">
+<ul>
+<li><a href="#1">1. 书写规范</a><ul>
+<li><a href="#11">1.1 项目结构</a></li>
+<li><a href="#12">1.2 项目命名规范</a></li>
+<li><a href="#13">1.3 格式&amp;编码</a></li>
+</ul>
+</li>
+<li><a href="#2-css">2. CSS 规范</a><ul>
+<li><a href="#21-css">2.1 CSS 命名规范</a></li>
+<li><a href="#22-css">2.2 CSS 书写规范</a></li>
+<li><a href="#23-css">2.3 CSS 注释格式</a></li>
+<li><a href="#24-css">2.4 CSS各属性的排列顺序：不做硬性要求</a></li>
+<li><a href="#25-css">2.5 CSS格式化</a></li>
+<li><a href="#26-css">2.6 CSS字体单位</a></li>
+</ul>
+</li>
+<li><a href="#3-js">3. JS 规范</a><ul>
+<li><a href="#31-js">3.1 JS命名规范</a><ul>
+<li><a href="#311-js">3.1.1 JS 变量命名</a></li>
+<li><a href="#312-js">3.1.2 JS 函数命名</a></li>
+<li><a href="#313-js">3.1.3 JS 常量命名</a></li>
+<li><a href="#314-js">3.1.4 JS 文件命名</a></li>
+<li><a href="#32-js">3.2 js 注释格式</a></li>
+<li><a href="#33-js">3.3 js 注意事项</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#4-html">4. HTML 规范</a><ul>
+<li><a href="#41">4.1 标签使用规范</a></li>
+<li><a href="#42-html">4.2 HTML注释</a></li>
+<li><a href="#43">4.3 注意事项</a></li>
+</ul>
+</li>
+<li><a href="#5-image">5. Image 规范</a><ul>
+<li><a href="#51">5.1 图片规范</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="1"><a name="user-content-1" href="#1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 书写规范</h2>
+<h4 id="11"><a name="user-content-11" href="#11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.1 项目结构</h4>
+<pre><code>---/html/
+|---- /index
+|---- /index/index.html         首页
+|---- /user/                   与用户相关的页面
+|---- /user/login.html          登录页
+---/css/
+|---- /base.css               重置浏览器样式
+|---- /page                   逻辑页面的css
+|---- /page/pagename.css        单独书写的css
+|---- /common.css              css通用样式库
+---/js/
+|---- /lib                     公用组件
+|---- /lib/jquery.2.2.3.min.js  调用jq库文件
+|---- /page                   逻辑页面的js
+|---- /page/pagename.js         单独书写的js
+|---- /common.js                公用方法
+---/img/
+|---- /page                   页面对应的图片
+|---- /page/wap                手机端图片夹
+|---- /page/wap/wap_icon.png    手机端图标
+|---- /logo.png               公用图片
+</code></pre>
+<h4 id="12"><a name="user-content-12" href="#12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2 项目命名规范</h4>
+<pre><code>* 项目：用项目对应的英文单词命名
+* 文件及文件夹:
+    * 全部英文小写字母，可以使用中线，不可出现其他字符，如login,my-order
+    * 调用 `/lib`里面的文件需包含版本号，压缩文件需包含`min`关键词，其他插件则可不包含，如：`/lib/jquery.1.9.1.js`
+</code></pre>
+<h4 id="13"><a name="user-content-13" href="#13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.3 格式&amp;编码</h4>
+<pre><code>* 文本文件： `.xxx` UTF-8_\(无BOM\)_ 编码
+* 图片文件： `.png` _(PNG-24)_ `.jpg` _(压缩率8-12)_
+* 动态图片： `.gif`
+* 压缩文件： `.tar.gz` `.zip``.rar`
+</code></pre>
+<h2 id="2-css"><a name="user-content-2-css" href="#2-css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. CSS 规范</h2>
+<h4 id="21-css"><a name="user-content-21-css" href="#21-css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1 CSS 命名规范</h4>
+<pre><code>* 所有的命名用小写的英文单词
+* 不使用简单的方位词直接命名，如“left”，“bottom”
+* 不缩写单词，除非一看就明白的单词
+* 长名称或词组可以使用下划线作为连接符
+* 避免选择器嵌套层级过多，少于3级
+* 不要随意使用id，id应该按需使用，而不能滥用
+* 使用CSS缩写属性 ，比如padding:0 10px 5px 5px等等，这样精简代码同时又能提高用户的阅读体验。
+</code></pre>
+<p>命名参考如下：
+<table width="680px" border="0" style="border-collapse: collapse;">
+<tbody>
+    <tr>
+        <th width="40%">CSS样式命名</th>
+        <th width="60%">说明</th>
+    </tr>
+    <tr>
+        <th colspan="2">网页公共命名</th>
+    </tr>
+    <tr>
+        <td>wrapper</td>
+        <td>页面外围控制整体布局宽度</td>
+    </tr>
+    <tr>
+        <td>container或content</td>
+        <td>容器,用于最外层</td><br /
+    </tr>
+    <tr>
+        <td>layout</td>
+        <td>布局</td>
+    </tr>
+    <tr>
+        <td>head, header</td>
+        <td>页头部分</td>
+    </tr>
+    <tr>
+        <td>foot, footer</td>
+        <td>页脚部分</td>
+    </tr>
+    <tr>
+        <td>nav</td>
+        <td>主导航</td>
+    </tr>
+    <tr>
+        <td>sub_nav</td>
+        <td>二级导航</td>
+    </tr>
+    <tr>
+        <td>menu</td>
+        <td>菜单</td>
+    </tr>
+    <tr>
+        <td>sub_menu</td>
+        <td>子菜单</td>
+    </tr>
+    <tr>
+        <td>side_bar</td>
+        <td>侧栏</td>
+    </tr>
+    <tr>
+        <td>sidebar_l, sidebar_r</td>
+        <td>左边栏或右边栏</td>
+    </tr>
+    <tr>
+        <td>main</td>
+        <td>页面主体</td>
+    </tr>
+    <tr>
+        <td>tag</td>
+        <td>标签</td>
+    </tr>
+    <tr>
+        <td>msg message</td>
+        <td>提示信息</td>
+    </tr>
+    <tr>
+        <td>tips</td>
+        <td>小技巧</td>
+    </tr>
+    <tr>
+        <td>vote</td>
+        <td>投票</td>
+    </tr>
+    <tr>
+        <td>friendlink</td>
+        <td>友情链接</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>标题</td>
+    </tr>
+    <tr>
+        <td>summary</td>
+        <td>摘要</td>
+    </tr>
+    <tr>
+        <td>login_bar</td>
+        <td>登录条</td>
+    </tr>
+    <tr>
+        <td>search_input</td>
+        <td>搜索输入框</td>
+    </tr>
+    <tr>
+        <td>hot</td>
+        <td>热门热点</td>
+    </tr>
+    <tr>
+        <td>search</td>
+        <td>搜索</td>
+    </tr>
+    <tr>
+        <td>search_output</td>
+        <td>搜索输出和搜索结果相似</td>
+    </tr>
+    <tr>
+        <td>search_bar</td>
+        <td>搜索条</td>
+    </tr>
+    <tr>
+        <td>search_results</td>
+        <td>搜索结果</td>
+    </tr>
+    <tr>
+        <td>copyright</td>
+        <td>版权信息</td>
+    </tr>
+    <tr>
+        <td>branding</td>
+        <td>商标</td>
+    </tr>
+    <tr>
+        <td>logo</td>
+        <td>网站LOGO标志</td>
+    </tr>
+    <tr>
+        <td>site_info</td>
+        <td>网站信息</td>
+    </tr>
+    <tr>
+        <td>site_info_legal</td>
+        <td>法律声明</td>
+    </tr>
+    <tr>
+        <td>site_info_credits</td>
+        <td>信誉</td>
+    </tr>
+    <tr>
+        <td>join_us</td>
+        <td>加入我们</td>
+    </tr>
+    <tr>
+        <td>partner</td>
+        <td>合作伙伴</td>
+    </tr>
+    <tr>
+        <td>service</td>
+        <td>服务</td>
+    </tr>
+    <tr>
+        <td>regsiter</td>
+        <td>注册</td>
+    </tr>
+    <tr>
+        <td>arr arrow</td>
+        <td>箭头</td>
+    </tr>
+    <tr>
+        <td>guild</td>
+        <td>指南</td>
+    </tr>
+    <tr>
+        <td>site_map</td>
+        <td>网站地图</td>
+    </tr>
+    <tr>
+        <td>list</td>
+        <td>列表</td>
+    </tr>
+    <tr>
+        <td>home_page</td>
+        <td>首页</td>
+    </tr>
+    <tr>
+        <td>sub_page</td>
+        <td>二级页面子页面</td>
+    </tr>
+    <tr>
+        <td>tool, toolbar</td>
+        <td>工具条</td>
+    </tr>
+    <tr>
+        <td>drop</td>
+        <td>下拉</td>
+    </tr>
+    <tr>
+        <td>dorp_menu</td>
+        <td>下拉菜单</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>状态</td>
+    </tr>
+    <tr>
+        <td>scroll</td>
+        <td>滚动</td>
+    </tr>
+    <tr>
+        <td>tab</td>
+        <td>标签页</td>
+    </tr>
+    <tr>
+        <td>left right center</td>
+        <td>居左、中、右</td>
+    </tr>
+    <tr>
+        <td>news</td>
+        <td>新闻</td>
+    </tr>
+    <tr>
+        <td>download</td>
+        <td>下载</td>
+    </tr>
+    <tr>
+        <td>banner</td>
+        <td>广告条(顶部广告条)</td>
+    </tr>
+</tbody>
+</table></p>
+<h4 id="22-css"><a name="user-content-22-css" href="#22-css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2 CSS 书写规范</h4>
+<pre><code>* 向“无ID，无层级，无标签”准则靠拢，可有效提高重用性，减小文件大小，提升渲染效率
+</code></pre>
+<h4 id="23-css"><a name="user-content-23-css" href="#23-css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3 CSS 注释格式</h4>
+<pre><code>* 用来区分页面的注释，如/******************************************产品中心****************************************/
+* 模块的注释,如/*首页导航栏*/
+</code></pre>
+<h4 id="24-css"><a name="user-content-24-css" href="#24-css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4 CSS各属性的排列顺序：不做硬性要求</h4>
+<pre><code>* Positioning（定位，如position，top，z-index）
+* Box model（盒模型，如display，box-sizing，width，border）
+* Typographic（排版，如font，line-height，text-align）
+* Visual（视觉，如background，color,opacity）
+* Other（其他，如cursor）
+
+由于定位（positioning）可以从正常的文档流中移除元素，并且还能覆盖盒模型（box model）相关的样式，因此排在首位。盒模型决定了组件的尺寸和位置，因此排在第二位。
+其他属性只是影响组件的内部（inside）或者是不影响前两组属性，因此排在后面。
+</code></pre>
+<h4 id="25-css"><a name="user-content-25-css" href="#25-css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.5 CSS格式化</h4>
+<pre><code>使用不换行方式书写，增加书写速度
+.box{background: none repeat scroll 0 0 transparent;bottom: 11px;position: relative;width: 22px;z-index: 33;}
+</code></pre>
+<h4 id="26-css"><a name="user-content-26-css" href="#26-css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.6 CSS字体单位</h4>
+<pre><code>* px像素（Pixel），相对长度单位，像素px是相对于显示器屏幕分辨率而言的。
+* em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。
+* rem也是相对长度单位，但相对的只是HTML根元素。
+* vw代表视窗(Viewport)的宽度为1%，如果视窗宽度为1000px，那么50vw = 500px
+* vh代表窗口高度的百分，如果视窗高度为800px，那么50vh = 400px
+* 公司项目使用时注意事项：现有项目都是使用px作为单位，现推荐使用rem,vw,vh作为单位
+</code></pre>
+<h2 id="3-js"><a name="user-content-3-js" href="#3-js" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. JS 规范</h2>
+<h3 id="31-js"><a name="user-content-31-js" href="#31-js" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1 JS命名规范</h3>
+<h4 id="311-js"><a name="user-content-311-js" href="#311-js" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.1 JS 变量命名</h4>
+<pre><code>* 命名方法：小驼峰式命名法
+* 命名规范：前缀应当是名词。(函数的名字前缀为动词，以此区分变量和函数)
+* 命名建议：尽量在变量名字中体现所属类型，如:length、count等表示数字类型；而包含name、title表示为字符串类型。
+* 示例
+    // 好的命名方式
+    var maxCount = 10;
+    var tableTitle = 'LoginTable';
+
+    // 不好的命名方式
+    var setCount = 10;
+    var getTitle = 'LoginTable';
+</code></pre>
+<h4 id="312-js"><a name="user-content-312-js" href="#312-js" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.2 JS 函数命名</h4>
+<pre><code>* 命名方法：小驼峰式命名法
+* 命名规范：前缀应当为动词
+* 命名建议：可使用常见动词约定
+</code></pre>
+<p><table style="height:175px;width:676px;border-collapse:collapse" border="0" ="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center;">动词</td>
+            <td>含义</td>
+            <td>返回值</td>
+        </tr>
+        <tr>
+        <td style="text-align: center;">can</td>
+        <td>判断是否可执行某个动作(权限)</td>
+        <td>函数返回一个布尔值。true：可执行；false：不可执行</td>
+        </tr>
+        <tr>
+        <td style="text-align: center;">has</td>
+        <td>判断是否含有某个值</td>
+        <td>函数返回一个布尔值。true：含有此值；false：不含有此值</td>
+        </tr>
+        <tr>
+        <td style="text-align: center;">is</td>
+        <td>判断是否为某个值</td>
+        <td>函数返回一个布尔值。true：为某个值；false：不为某个值</td>
+        </tr>
+        <tr>
+        <td style="text-align: center;">get</td>
+        <td>获取某个值</td>
+        <td>函数返回一个非布尔值</td>
+        </tr>
+        <tr>
+        <td style="text-align: center;">set</td>
+        <td>设置某个值</td>
+        <td>无返回值、返回是否设置成功或者返回链式对象</td>
+        </tr>
+        <tr>
+        <td style="text-align: center;">load</td>
+        <td>加载某些数据</td>
+        <td>无返回值或者返回是否加载完成的结果</td>
+        </tr>
+    </tbody>
+</table></p>
+<h4 id="313-js"><a name="user-content-313-js" href="#313-js" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.3 JS 常量命名</h4>
+<pre><code>* 命名方法：名称全部大写
+* 命名规范：使用大写字母和下划线来组合命名，下划线用以分割单词
+* 示例
+    var MAX_COUNT = 10;
+    var URL = 'http://www.baidu.com';
+</code></pre>
+<h4 id="314-js"><a name="user-content-314-js" href="#314-js" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.4 JS 文件命名</h4>
+<pre><code>* 使用短线（-）或句点（.）作为分隔符号，推荐使用句点，最好使用小写英文字符，不要使用其他符号和扩展字符，如 jQuery UI 1.9.0 的源文件可命名为“jquery-ui-1.9.0.js”
+* 使用 .js 扩展名，这个扩展名的兼容性最好。其实任何扩展名都可以，只要是 text 类型、编码正确即可
+* 用句点分隔表示名称中的从属关系，范围大的在前，如jQuery 的表单插件 Form既可以命名为jquery.form.js
+</code></pre>
+<h4 id="32-js"><a name="user-content-32-js" href="#32-js" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.2 js 注释格式</h4>
+<pre><code>* 使用多行注释,以/*开头，*/结尾
+</code></pre>
+<h4 id="33-js"><a name="user-content-33-js" href="#33-js" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3 js 注意事项</h4>
+<pre><code>* 书写格式
+    * JS 换行缩进：采用tab（打散为4个空格）
+    * 结束行需添加分号`;`
+* 性能
+    * 尽量选用局部变量而不是全局变量
+    * 尽量使用链式写法
+    * 尽量减少DOM调用
+    * 将js脚本放到页面底部
+    * 使用jquery的data来存取数据，减少对dom的操作
+    * 使用on方法绑定事件，这是jquery的推荐使用
+    * 选择器的选择：尽量不用标签选择器，能用ID选择器的就不用class选择器
+</code></pre>
+<h2 id="4-html"><a name="user-content-4-html" href="#4-html" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4. HTML 规范</h2>
+<h4 id="41"><a name="user-content-41" href="#41" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.1 标签使用规范</h4>
+<pre><code>* 尽量减少标签层级
+* 双标签必须闭合，单标签用斜线闭合
+* HTML第一行统一使用HTML5标准&lt;!DOCTYPE html&gt;
+* 一律统一标签结尾斜杠的书写形式：`&lt;br /&gt;` `&lt;hr /&gt;` 注意之间空格
+* 避免使用已过时标签，如：`&lt;font&gt;` `&lt;frame&gt;` `&lt;s&gt;`
+* `&lt;img&gt;`标签默认缺省格式：`&lt;img src="#" alt="缺省时文字" /&gt;`
+* `&lt;a&gt;`标签缺省格式：`&lt;a href="#" title="链接名称"&gt;xxx&lt;/&gt;` 注：`target="_blank"` 根据需求决定
+* style、link、script可省略type属性，因为 text/css 和 text/javascript 分别是他们的默认值
+</code></pre>
+<h4 id="42-html"><a name="user-content-42-html" href="#42-html" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.2 HTML注释</h4>
+<pre><code>&lt;!--内容--&gt;
+ &lt;div class="content"&gt;
+    &lt;p&gt;content&lt;/p&gt;
+  &lt;/div&gt;
+</code></pre>
+<h4 id="43"><a name="user-content-43" href="#43" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.3 注意事项</h4>
+<pre><code>* 手机端的自适应布局尽量采用弹性布局，而不是百分比
+* `css`文件都 置于头部
+* HTML换行缩进：采用 tab空格
+* 其他效果`js`及`统计代码` 文件置于尾部
+* 手机端的页面都按750px来做，显示效果按375px
+</code></pre>
+<h2 id="5-image"><a name="user-content-5-image" href="#5-image" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5. Image 规范</h2>
+<h4 id="51"><a name="user-content-51" href="#51" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.1 图片规范</h4>
+<pre><code>* 图片大小：切图时使用web格式保存，减小图片大小
+* 图片尺寸：一律采用整数，如20X20，50X50
+* 图片合并：小图片一律要合并，并保存对应的psd文件，以便后期修改
+</code></pre></article></body></html>

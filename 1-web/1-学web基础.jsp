@@ -3,9 +3,9 @@ Q：jsp的内置对象都有哪些？
 request
 response
 pageContext
-session 
+session aaaaaaaaa
 application
-out 
+out
 config
 page
 exception
@@ -22,11 +22,11 @@ post的参数是通过另外的流传递的，不通过url，所以可以很大�
 如果是get就调用doGet(), 如果是post就调用doPost()。
 你也可以直接过载doService()方法，这样你可以不管是get还是post。都会执行这个方法。
 
-service()是在javax.servlet.Servlet接口中定义的, 在 javax.servlet.GenericServlet 中实现了这个接口, 
-而 doGet/doPost 则是在 javax.servlet.http.HttpServlet 中实现的, 
-javax.servlet.http.HttpServlet 是 javax.servlet.GenericServlet 的子类. 
-所有可以这样理解, 其实所有的请求均首先由 service() 进行处理, 
-而在 javax.servlet.http.HttpServlet 的 service() 方法中, 主要做的事情就是判断请求类型是 Get 还是 Post, 
+service()是在javax.servlet.Servlet接口中定义的, 在 javax.servlet.GenericServlet 中实现了这个接口,
+而 doGet/doPost 则是在 javax.servlet.http.HttpServlet 中实现的,
+javax.servlet.http.HttpServlet 是 javax.servlet.GenericServlet 的子类.
+所有可以这样理解, 其实所有的请求均首先由 service() 进行处理,
+而在 javax.servlet.http.HttpServlet 的 service() 方法中, 主要做的事情就是判断请求类型是 Get 还是 Post,
 然后调用对应的 doGet/doPost 执行.
 
 重复访问使用GET方法请求的页面，浏览器会使用缓存处理后续请求。

@@ -1,0 +1,2 @@
+Python 3 文档(简体中文)：http://docspy3zh.readthedocs.io/en/latest/library/
+Python包管理工具——Pip：http://blog.csdn.net/olanlanxiari/article/details/48086917
