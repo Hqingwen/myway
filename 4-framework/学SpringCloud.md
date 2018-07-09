@@ -241,3 +241,15 @@ eureka:
 3. 服务注册中心
 * 失效剔除
 * 自我保护
+
+
+spring-cloud-starter-parent 具备spring-boot-starter-parent同样功能并附加Spring Cloud的依赖
+spring-cloud-starter-config 默认的配置服务依赖，快速自动引入服务的方式，端口8888
+spring-cloud-config-server／client 用户自定义配置服务的服务端／客户端依赖
+spring-cloud-starter-eureka-server 服务发现的Eureka Server依赖
+spring-cloud-starter-eureka 服务发现的Eureka客户端依赖
+spring-cloud-starter-hystrix／zuul／feign／ribbon 断路器（Hystrix），智能路有（Zuul），客户端负载均衡（Ribbon）的依赖
+angular-ui-router 页面分发路由依赖
+
+
+[史上最简单的 SpringCloud 教程](http://blog.csdn.net/forezp/article/details/70148833)
