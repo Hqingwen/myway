@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ms-resumes-service/ms-resumes-client/ms-resumes-client.iml" filepath="$PROJECT_DIR$/ms-resumes-service/ms-resumes-client/ms-resumes-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-resumes-client/ms-resumes-client.iml" filepath="$PROJECT_DIR$/ms-resumes-client/ms-resumes-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-resumes-service/ms-resumes-interface/ms-resumes-interface.iml" filepath="$PROJECT_DIR$/ms-resumes-service/ms-resumes-interface/ms-resumes-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-resumes-interface/ms-resumes-interface.iml" filepath="$PROJECT_DIR$/ms-resumes-interface/ms-resumes-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-resumes-service/ms-resumes-server/ms-resumes-server.iml" filepath="$PROJECT_DIR$/ms-resumes-service/ms-resumes-server/ms-resumes-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-resumes-server/ms-resumes-server.iml" filepath="$PROJECT_DIR$/ms-resumes-server/ms-resumes-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-resumes-service/ms-resumes-service.iml" filepath="$PROJECT_DIR$/ms-resumes-service/ms-resumes-service.iml" />
+    </modules>
+  </component>
+</project>

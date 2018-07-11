@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ms-resumes-client" />
+        <module name="ms-resumes-interface" />
+        <module name="ms-resumes-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.7">
+      <module name="ms-resumes-client" target="1.7" />
+      <module name="ms-resumes-interface" target="1.7" />
+      <module name="ms-resumes-server" target="1.7" />
+      <module name="ms-resumes-service" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
